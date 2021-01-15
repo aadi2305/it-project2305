@@ -6,8 +6,11 @@ import ArrowDropDownCircleOutlinedIcon from '@material-ui/icons/ArrowDropDownCir
 
 const Navbar = () => {
     const [toggle, setToggle] = useState(false);
-    const [showToggleBtn, setshowToggleBtn] = useState(false);
-    console.log("rendered...");
+    
+    var bool = false
+    var size = window.innerWidth;
+    if(window.innerWidth < 1000)bool = true;
+    const [showToggleBtn, setshowToggleBtn] = useState(bool);
     useEffect(() => {
         console.log("aye");
         function handleResize() {
