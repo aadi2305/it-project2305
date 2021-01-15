@@ -18,7 +18,10 @@ const Navbar = () => {
     });
     return ( 
             <nav class="navbar">
+                {/* <div className = "name-and-logo">
+                <img src="./Screenshot (41).png" alt=""/> */}
                 <h1 class="titleName" href="#">Calorix</h1>
+                {/* </div> */}
                 {showToggleBtn ? null:
                 <div className = "navbar-list">
                     <p>Home</p>

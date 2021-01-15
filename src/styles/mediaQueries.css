@@ -20,7 +20,7 @@
         display: flex;
         justify-content: center;
     }
-    .signUpForm input, button, .alert{
+    .signUpForm input,.signUpForm button,.signUpForm .alert{
         width: 82.5vw !important;
         padding: 4vw !important;
     }

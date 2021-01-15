@@ -6,8 +6,8 @@
     padding: 0;
 }
 .dashboard{
-    padding-left: 4%;
-    padding-right: 4%;
+    padding-left: 6%;
+    padding-right: 6%;
     color: #05386b !important;
     background-color:  #5cdb95 !important;
 }
@@ -17,8 +17,16 @@
     justify-content: space-between;
     font-weight: 600;
 }
+.navbar img{
+    width: 50px ;
+}
+.name-and-logo{
+    display: flex;
+    align-items: center;
+}
 .titleName{
     font-weight: 1000;
+    margin-bottom: 0;
 }
 .navbar p , button{
     margin-bottom: 0;
@@ -102,15 +110,19 @@
 }
 .aye2{
     position: relative;
+    align-items: center;
 }
 #visibility-icon{
     position: absolute;
+    top: 12px;
     cursor: pointer;
     margin-left: 10px;
     background-color: #05386b !important;
     color: #5cdb95 !important;
 }
 #visibility-off-icon{
+    position: absolute;
+    top: 12px;
     cursor: pointer;
     margin-left: 10px;
 }

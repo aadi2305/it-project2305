@@ -37,7 +37,7 @@ const Mainbody = () => {
                         <input type="email" placeholder = "Email Address"/>
                         <div className = "aye2">
                             <input type="password" id = "password"ref = {passoword}placeholder = "Password"/>
-                            {passwordShow ? 
+                            {!passwordShow ? 
                                 <VisibilityOffIcon onClick = {showPassword} id = "visibility-off-icon" />:
                                 <VisibilityIcon onClick = {showPassword} id = "visibility-icon" />
                             }
