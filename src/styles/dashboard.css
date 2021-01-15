@@ -1,0 +1,120 @@
+.container-fluid{
+    height: 200px;
+    background-color: white;
+}
+.container-fluid{
+    padding: 0;
+}
+.dashboard{
+    padding-left: 4%;
+    padding-right: 4%;
+    color: #05386b !important;
+    background-color:  #5cdb95 !important;
+}
+.navbar{
+    padding: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+}
+.titleName{
+    font-weight: 1000;
+}
+.navbar p , button{
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 101%;
+}
+
+.navbar-list{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    width: 40%;
+}
+.dashboard .btn{
+    background-color: #05386b !important;
+    color:  #5cdb95 !important;
+}
+.dashboard .btn:hover{
+    color: #05386b !important;
+    background-color:  #5cdb95 !important;
+}
+.dashboard .dropdown-toggle{
+    font-size: 260%;
+}
+.dashboard .dropdown-toggle:hover{
+    color:  #5cdb95 !important;
+    background-color: #05386b !important;
+}
+
+.dashboard .dropdown-menu{
+    background-color: #05386b;
+}
+.dashboard .dropdown-item{
+    font-weight: 600;
+    color:  #5cdb95 !important;
+}
+.dashboard .dropdown-item:hover{
+    color: #05386b !important;
+    background-color:  #5cdb95 !important;
+}
+
+
+.mainbody{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    height: fit-content;
+    background-color:  #5cdb95 !important;
+}
+
+.mainbody .h1{
+    font-size: 80px;
+    width: fit-content;
+    font-weight: bolder;
+    color: #edf5e1;
+    font-family: 'Montserrat Subrayada', sans-serif !important;
+}
+.aye{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.signUpForm{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.signUpForm input{
+    outline: none;
+    background-color:#edf5e1 ;
+    width: 400px;
+    border: 0;
+    padding: 12px;
+    margin-bottom: 10px;
+}
+
+.signUpForm button{
+    width: 400px;
+    border: 0;
+    padding: 12px;
+    margin-bottom: 10px;
+}
+.aye2{
+    position: relative;
+}
+#visibility-icon{
+    position: absolute;
+    cursor: pointer;
+    margin-left: 10px;
+    background-color: #05386b !important;
+    color: #5cdb95 !important;
+}
+#visibility-off-icon{
+    cursor: pointer;
+    margin-left: 10px;
+}
+.mainbody .alert{
+    width: 400px;
+    text-align: center;
+}
