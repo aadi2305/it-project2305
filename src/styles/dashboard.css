@@ -8,8 +8,14 @@
 .dashboard{
     padding-left: 6%;
     padding-right: 6%;
+}
+.dashboard-light{
     color: #05386b !important;
     background-color:  #5cdb95 !important;
+}
+.dashboard-dark{
+    background-color: #05386b !important;
+    color:  #5cdb95 !important;
 }
 .navbar{
     padding: 8px 0;
@@ -38,42 +44,68 @@
     display: flex;
     justify-content:space-between;
     align-items: center;
-    width: 40%;
+    width: 50%;
 }
-.dashboard .btn{
+
+.dashboard-dark .btn{
+    background-color: #5cdb95 !important;
+    color:  #05386b !important;
+}
+.dashboard-light .btn{
     background-color: #05386b !important;
     color:  #5cdb95 !important;
 }
-.dashboard .btn:hover{
+
+.dashboard-dark  .btn:hover{
+    color: #5cdb95 !important;
+    background-color:  #05386b !important;
+}
+.dashboard-light .btn:hover{
     color: #05386b !important;
     background-color:  #5cdb95 !important;
 }
 .dashboard .dropdown-toggle{
     font-size: 260%;
 }
-.dashboard .dropdown-toggle:hover{
+.dashboard-dark .dropdown-toggle:hover{
+    color:  #05386b !important;
+    background-color: #5cdb95 !important;
+}
+.dashboard-light .dropdown-toggle:hover{
     color:  #5cdb95 !important;
     background-color: #05386b !important;
 }
 
-.dashboard .dropdown-menu{
+.dashboard-dark .dropdown-menu{
+    background-color: #5cdb95;
+}
+.dashboard-light .dropdown-menu{
     background-color: #05386b;
 }
-.dashboard .dropdown-item{
+
+.dashboard-dark  .dropdown-item{
+    font-weight: 600;
+    color:  #05386b !important;
+}
+.dashboard-light  .dropdown-item{
     font-weight: 600;
     color:  #5cdb95 !important;
 }
-.dashboard .dropdown-item:hover{
+
+.dashboard-dark .dropdown-item:hover{
+    color: #5cdb95 !important;
+    background-color:  #05386b !important;
+}
+.dashboard-light .dropdown-item:hover{
     color: #05386b !important;
     background-color:  #5cdb95 !important;
 }
-
 
 .mainbody{
     padding-top: 100px;
     padding-bottom: 100px;
     height: fit-content;
-    background-color:  #5cdb95 !important;
+    background-color:  transparent !important;
 }
 
 .mainbody .h1{
@@ -92,6 +124,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: center;
 }
 .signUpForm input{
     outline: none;
@@ -112,7 +145,15 @@
     position: relative;
     align-items: center;
 }
-#visibility-icon{
+.dashboard-dark #visibility-icon{
+    position: absolute;
+    top: 12px;
+    cursor: pointer;
+    margin-left: 10px;
+    background-color: #5cdb95 !important;
+    color: #05386b !important;
+}
+.dashboard-light #visibility-icon{
     position: absolute;
     top: 12px;
     cursor: pointer;
