@@ -7,6 +7,7 @@ import {useTheme} from "../contexts/ThemeContext";
 const Dashboard = () => {
 
     const [othermode, setotherMode] = useState("Dark");
+    
     const {currentTheme, updateTheme} = useTheme();
 
     const modeChange = ()=>{
@@ -18,7 +19,7 @@ const Dashboard = () => {
         }
         updateTheme();
     }
-
+    //console.log(CurrentTheme);
     return ( 
         <div className={"dashboard dashboard-"+currentTheme}>
             <Navbar modeChange = {modeChange} mode = {othermode}/>

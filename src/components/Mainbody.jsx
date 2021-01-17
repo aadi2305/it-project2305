@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
+
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import {useAuth} from "../contexts/AuthContext";
 import {useTheme} from "../contexts/ThemeContext";
+import { Redirect } from 'react-router-dom';
 
 const Mainbody = () => {
 
@@ -14,7 +16,7 @@ const Mainbody = () => {
     const email = useRef(null);
     const fullName = useRef(null);
 
-    const {signup, login} = useAuth();
+    const {signup, login, currentUser} = useAuth();
     const{loginStatus} = useTheme()
     
     const showPassword = (e)=>{
@@ -44,11 +46,12 @@ const Mainbody = () => {
         }
         catch(err) {
           console.log(err);
-        }
+        }                
     }
 
     return ( 
         <div className="mainbody container-fluid">
+            {currentUser && <Redirect to = "/form" />}
             <div className="row">
                 <div className="col">
                     <h1 className = "h1">Count Those Calories</h1>
@@ -81,6 +84,7 @@ const Mainbody = () => {
                                     {error}
                                 </div> 
                             :null}
+                            <input type="text" style = {{visibility : "hidden"}}/>
                             <input ref = {email} type="email" placeholder = "Email Address"/>
                             <div className = "aye2">
                                 <input type="password" id = "password"ref = {passoword}placeholder = "Password"/>
@@ -91,6 +95,7 @@ const Mainbody = () => {
                                 
                             </div>
                             <button className="btn">Log In</button>
+                            <input type="text" style = {{visibility : "hidden"}}/>
                         </form>
                     }
                 </div>

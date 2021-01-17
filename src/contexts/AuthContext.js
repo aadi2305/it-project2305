@@ -50,7 +50,8 @@ export const AuthProvider = ({children})=>{
         updatePassword,
         updateEmail,
         resetPassword,
-        logout
+        logout,
+        currentUser
     }
     return (
         <AuthContext.Provider value = {value}>

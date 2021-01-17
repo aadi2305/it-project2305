@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import ArrowDropDownCircleOutlinedIcon from '@material-ui/icons/ArrowDropDownCircleOutlined';
 import {useTheme} from "../contexts/ThemeContext";
+import {useAuth} from "../contexts/AuthContext";
 
 
 const Navbar = (props) => {
 
     const {changeLoginStatus, loginStatus} = useTheme();
+    const{currentUser, logout} = useAuth();
 
     var bool = false
     if(window.innerWidth < 1000)bool = true;
     const [showToggleBtn, setshowToggleBtn] = useState(bool);
     useEffect(() => {
-        console.log("aye");
         function handleResize() {
             if(window.innerWidth < 1000)setshowToggleBtn(true);
             else{setshowToggleBtn(false)}
@@ -29,8 +30,9 @@ const Navbar = (props) => {
                     <p>Download</p>
                     <button onClick = {(e)=>{
                             e.preventDefault();
-                            changeLoginStatus();
-                            }}  className = "btn">{!loginStatus?"Log In":"Sign Up"}</button>
+                            if(currentUser)logout();
+                            else changeLoginStatus();
+                            }}  className = "btn">{currentUser? "Log Out":!loginStatus?"Log In":"Sign Up"}</button>
                     <button onClick = {()=>{
                         props.modeChange();
                     }} className = "btn">{props.mode} Mode</button>
@@ -52,8 +54,9 @@ const Navbar = (props) => {
                         <li><a className="dropdown-item" href="#">Download</a></li>
                         <button onClick = {(e)=>{
                             e.preventDefault();
-                            changeLoginStatus();
-                            }}  className = "btn dropdown-item">{!loginStatus?"Log In":"Sign Up"}</button>
+                            if(currentUser)logout();
+                            else changeLoginStatus();
+                            }}  className = "btn dropdown-item">{currentUser? "Log Out":!loginStatus?"Log In":"Sign Up"}</button>
                         <button onClick = {()=>{
                         props.modeChange();
                         }} className = "btn dropdown-item">{props.mode} Mode</button>
