@@ -260,5 +260,10 @@ label{
   
   /* Style the indicator (dot/circle) */
 
+.next-skip-button{
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+
 
 

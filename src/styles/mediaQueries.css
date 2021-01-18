@@ -55,7 +55,7 @@
     }
     .the-form .btn{
         font-size: 14px !important;
-        width: 90px !important;
+        width: 80px !important;
     }
     .age{
         display: flex;
@@ -63,6 +63,11 @@
         justify-content: flex-start !important;
         margin-top: 20px;
     }
+    .sex{
+        text-align: center !important;
+        margin-right: 50px !important;
+    }
+
     .units{
         padding: 3px !important;
         width: 40px !important;

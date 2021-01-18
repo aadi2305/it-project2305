@@ -74,11 +74,21 @@ const TheForm = () => {
         }
         updateTheme();
     }
-    const submitHandler2 = ()=>{
+    useEffect(() => {
         var theArray = $('form').serialize().split("&");
+        if(theArray[0].split("=")[1] === "0")setmaintainenceCal(1.2*BMR);
+        else if(theArray[0].split("=")[1] === "1")setmaintainenceCal(1.37*BMR);
+        else if(theArray[0].split("=")[1] === "2")setmaintainenceCal(1.46*BMR);
+        else if(theArray[0].split("=")[1] === "3")setmaintainenceCal(1.55*BMR);
+    }, [BMR]);
+
+    const submitHandler2 = ()=>{
+        
+        var theArray = $('form').serialize().split("&");
+
         if(theArray[1].split("=")[1] === "1")harrisBenedict();
         else if(theArray[1].split("=")[1] === "0")mifflinSteor();
-        
+        console.log(BMR);
         if(theArray[0].split("=")[1] === "0")setmaintainenceCal(1.2*BMR);
         else if(theArray[0].split("=")[1] === "1")setmaintainenceCal(1.37*BMR);
         else if(theArray[0].split("=")[1] === "2")setmaintainenceCal(1.46*BMR);
@@ -101,7 +111,6 @@ const TheForm = () => {
 
         var hegihtInInches = heightValue*39.37;
         hegihtInInches = hegihtInInches - 60;
-        console.log(hegihtInInches);
 
         if(male && hegihtInInches > 0)setidealWeight((52 + (1.9*hegihtInInches)).toFixed(0))
         else if(!male && hegihtInInches > 0)setidealWeight((49 + (1.7*hegihtInInches)).toFixed(0))
@@ -181,9 +190,15 @@ const TheForm = () => {
                         <input autoComplete = "off" min = "0" id = "weight"onChange = {onChangeHandler} type="number" min = "0" />
                         <span onClick = {()=>setWeightUnitToggle(!weightUnitToggle)}  className = "units">{weightUnitToggle?"Kg":"Pd"}</span>
                     </div>
-                    <button onClick = {submitHandler2}className ="btn submit-button">Submit</button>
+                   
                 </div>
             </div>
+            <div style = {{display : "block" ,textAlign : "center"}}>
+                <button  onClick = {submitHandler2}className ="next-skip-button btn submit-button">Submit</button>
+                <button  className ="next-skip-button btn submit-button">Skip</button>
+                <button  className ="next-skip-button btn submit-button">Next</button>
+                </div>
+            
             {BMR === 0? null : <div style = {{textAlign : "center"}}>
                 <p style = {{marginBottom : "0"}}>You need</p>
                 <h3 style = {{fontWeight : "600"}}>{maintainenceCal.toFixed(1)} Calories/Day</h3>
