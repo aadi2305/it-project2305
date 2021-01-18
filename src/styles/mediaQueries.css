@@ -30,4 +30,72 @@
     #visibility-off-icon{
         display: none
     }
+    .the-form .submit-button{
+        margin-bottom: 50px;
+    }
+    .the-form-dark .form-control{
+        width: 80% !important;
+    }
+    .the-form-light .form-control{
+        width: 80% !important;
+    }
+    .the-form .row p{
+        width: 40px !important;
+    }
+    .the-form .row .BMI-class .form-control{
+        font-size: 13px !important;
+        padding: 5px 8px ;
+    }
+    .the-form input{
+        padding: 5px 8px !important;
+        width: 180px !important;
+    }
+    .the-form{
+        font-size: 13px !important;
+    }
+    .the-form .btn{
+        font-size: 13px !important;
+        width: 90px !important;
+    }
+    .age{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start !important;
+        margin-top: 20px;
+    }
+    .units{
+        padding: 3px !important;
+        width: 40px !important;
+    }
+    .checkbox{
+        font-size: 12px !important;
+    }
+    #years{
+        display: none;
+    }
+    .checkbox{
+        display: none !important;
+    }
+    .BMI-class select{
+        margin-left: 20px;
+        display: flex !important;
+        justify-content: flex-end !important;
+        font-size: 13px !important;
+    }
+    #ur-bmi-text, #ideal-weight{
+        width: 150px !important;
+        font-size: 13px !important;
+    }
+    .weight-status-and-ideal-weight{
+        font-size: 17px !important;
+    }
+    #feet, #inches{
+        width: 67px !important;
+        padding: 5px 8px !important;
+        height: 30px;
+    }
+    .feetColon{
+        font-size: medium !important;
+    }
+    
 }
