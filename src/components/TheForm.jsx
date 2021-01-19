@@ -127,23 +127,23 @@ const TheForm = () => {
                     </div>
                     <div className="age">
                         <p>Age: </p>
-                        <input autoComplete = "off" id = "age"onChange = {onChangeHandler}type="number" min = "0"/>
+                        <input placeholder = "Age..."autoComplete = "off" id = "age"onChange = {onChangeHandler}type="number" min = "0"/>
                         <span id = "years"className = "units">Years</span>
                     </div>
                     <div className="age">
                         <p>Height: </p>
                         {heightUnitToggle?
-                        <input autoComplete = "off" id = "height" onChange = {onChangeHandler} type="number" min = "0" />:
+                        <input autoComplete = "off" placeholder = "Height..."id = "height" onChange = {onChangeHandler} type="number" min = "0" />:
                         <div className = "ftnIn-class">
-                            <input autoComplete = "off" onChange = {onChangeHandler} className = "ftnIn" id = "feet"onChange = {onChangeHandler} type="number" min = "0" /><span className = "feetColon">'</span>
-                            <input autoComplete = "off" onChange = {onChangeHandler} className = "ftnIn"id = "inches"onChange = {onChangeHandler} type="number" min = "0" /><span className = "feetColon">"</span>
+                            <input placeholder = "Feet..."autoComplete = "off" onChange = {onChangeHandler} className = "ftnIn" id = "feet"onChange = {onChangeHandler} type="number" min = "0" /><span className = "feetColon">'</span>
+                            <input placeholder = "Inches..." autoComplete = "off" onChange = {onChangeHandler} className = "ftnIn"id = "inches"onChange = {onChangeHandler} type="number" min = "0" /><span className = "feetColon">"</span>
                         </div>
                         }
                         <span onClick = {()=>setHeightUnitToggle(!heightUnitToggle)} className = "units">{heightUnitToggle?"CM":"Ft/In"}</span>
                     </div>
                     <div className="age">
                         <p>Weight: </p>
-                        <input autoComplete = "off" id = "weight" ref = {weightRef} onChange = {onChangeHandler} type="number" min = "0" />
+                        <input placeholder = "Weight..." autoComplete = "off" id = "weight" ref = {weightRef} onChange = {onChangeHandler} type="number" min = "0" />
                         <span onClick = {()=>setWeightUnitToggle(!weightUnitToggle)}  className = "units">{weightUnitToggle?"Kg":"Pd"}</span>
                     </div>
                     <button onClick = {submitHandler1} className ="btn submit-button">Submit</button>
@@ -153,12 +153,12 @@ const TheForm = () => {
                     {BMI !== 0 && idealWeight!== 0 &&
                     <div className="BMI-class row">
                         <div className="col" style = {{textAlign : "center"}}>
-                            <p id = "ur-bmi-text">Your BMI: {BMI}</p>
+                            <h5 id = "ur-bmi-text">Your BMI: {BMI}</h5>
                             {/* <span className = "bmi-text">{BMI}</span> */}
                             <h4 className = "weight-status-and-ideal-weight" style = {{fontWeight : "650"}}>{weightStatus}</h4>
                         </div>
                         <div className="col" style = {{textAlign : "center"}}>
-                            <p id = "ideal-weight">Ideal Weight Range</p>
+                            <h5 id = "ideal-weight">Ideal Weight Range</h5>
                             <h4 className = "weight-status-and-ideal-weight" style = {{fontWeight : "650"}}>{idealWeight-5}-{parseInt(idealWeight)+5}Kg</h4>
                         </div>
                         
@@ -187,7 +187,7 @@ const TheForm = () => {
                     </form>
                     <div className="BMI-class">
                         <p>Weight Target: </p>
-                        <input autoComplete = "off" min = "0" id = "weight"onChange = {onChangeHandler} type="number" min = "0" />
+                        <input placeholder = "Target Weight..." autoComplete = "off" min = "0" id = "weight"onChange = {onChangeHandler} type="number" min = "0" />
                         <span onClick = {()=>setWeightUnitToggle(!weightUnitToggle)}  className = "units">{weightUnitToggle?"Kg":"Pd"}</span>
                     </div>
                    

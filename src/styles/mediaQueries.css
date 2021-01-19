@@ -35,6 +35,9 @@
     .BMI-class{
         max-width: 59%;
     }
+    #dropdownMenuButton{
+        font-size: 40px;
+    }
 }
 
 @media only screen and (max-width: 480px) {
@@ -64,13 +67,25 @@
         font-size: 40px;
     }
     .the-form-dark .form-control{
+        margin-left: auto;;
+        margin-right: auto;
         width: 80% !important;
     }
     .the-form-light .form-control{
+        margin-left: auto;;
+        margin-right: auto;
         width: 80% !important;
     }
+    .ftnIn-class{
+        width: 100%;
+        display: flex !important;
+        justify-content: space-evenly !important;
+    }
+    .ftnIn{
+        margin: 0 !important;
+    }
     .the-form .row p{
-        width: 70px !important;
+        display: none !important;
     }
     .the-form .row .BMI-class .form-control{
         font-size: 15px !important;
@@ -96,10 +111,12 @@
         margin-top: 20px;
     }
     .sex{
-        text-align: center !important;
-        margin-right: 10px !important;
+        margin-left: auto;
+        margin-right: auto;
     }
-
+    #malebutton{
+        margin-left: 0 !important;
+    }
     .units{
         padding: 3px !important;
         width: 40px !important;
@@ -123,6 +140,9 @@
     }
     #ur-bmi-text, #ideal-weight{
         width: 150px !important;
+        padding-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
         font-size: 15px !important;
     }
     .weight-status-and-ideal-weight{
@@ -139,5 +159,7 @@
     .next-skip-button{
         margin-bottom: 1px;
     }
-    
+    .next-skip-button{
+        margin-left: 0;
+    }
 }
