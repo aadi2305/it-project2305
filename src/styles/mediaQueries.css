@@ -1,4 +1,4 @@
-@media only screen and (max-width: 963.5px ) and (min-width: 480px){
+@media only screen and (max-width: 991.5px ) and (min-width: 480px){
     .mainbody .h1{
         text-align: center;
         font-size: 70px;
@@ -7,6 +7,33 @@
         padding-top: 100px;
         display: flex;
         justify-content: center;
+    }
+    .the-form .BMICol{
+        display: flex;
+        justify-content: flex-end; 
+    }
+    .infoTab1{
+        margin-bottom: 50px;
+    }
+    .the-form .form-group{
+        display: flex !important;
+        justify-content: center;
+    }
+    .form-control{
+        margin-right: 0!important;
+    }
+    .BMICol{
+        display: flex;
+        flex-direction: column;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    .checkbox{
+        display: none !important;
+        width: 65%;
+    }
+    .BMI-class{
+        max-width: 59%;
     }
 }
 
@@ -33,6 +60,9 @@
     .the-form .submit-button{
         margin-bottom: 50px;
     }
+    #dropdownMenuButton{
+        font-size: 40px;
+    }
     .the-form-dark .form-control{
         width: 80% !important;
     }
@@ -40,32 +70,34 @@
         width: 80% !important;
     }
     .the-form .row p{
-        width: 40px !important;
+        width: 70px !important;
     }
     .the-form .row .BMI-class .form-control{
-        font-size: 14px !important;
+        font-size: 15px !important;
         padding: 5px 8px ;
     }
     .the-form input{
+        /* padding: 5px 8px !important;
+        width:70%!important; */
+        width: 70vw !important;
         padding: 5px 8px !important;
-        width: 180px !important;
     }
     .the-form{
-        font-size: 14px !important;
+        font-size: 15px !important;
     }
     .the-form .btn{
-        font-size: 14px !important;
-        width: 80px !important;
+        font-size: 15px !important;
+        width: 100px !important;
     }
-    .age{
+    .the-form .age{
         display: flex;
         align-items: center;
-        justify-content: flex-start !important;
+        justify-content: flex-end !important;
         margin-top: 20px;
     }
     .sex{
         text-align: center !important;
-        margin-right: 50px !important;
+        margin-right: 10px !important;
     }
 
     .units{
@@ -76,7 +108,9 @@
         font-size: 12px !important;
     }
     #years{
-        display: none;
+        visibility: hidden;
+        width: 0px;
+        /* display: none; */
     }
     .checkbox{
         display: none !important;
@@ -85,11 +119,11 @@
         margin-left: 20px;
         display: flex !important;
         justify-content: flex-end !important;
-        font-size: 14px !important;
+        font-size: 15px !important;
     }
     #ur-bmi-text, #ideal-weight{
         width: 150px !important;
-        font-size: 14px !important;
+        font-size: 15px !important;
     }
     .weight-status-and-ideal-weight{
         font-size: 18px !important;
@@ -101,6 +135,9 @@
     }
     .feetColon{
         font-size: medium !important;
+    }
+    .next-skip-button{
+        margin-bottom: 1px;
     }
     
 }

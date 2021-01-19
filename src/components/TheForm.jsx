@@ -10,7 +10,7 @@ const TheForm = () => {
     const [othermode, setotherMode] = useState("Dark");
     const [heightUnitToggle, setHeightUnitToggle] = useState(true);
     const [weightUnitToggle, setWeightUnitToggle] = useState(true);
-    const [BMI, setBMI] = useState(0);
+    const [BMI, setBMI] = useState(1);
     const [male, setMale] = useState(null);
     const [weight, setweight] = useState(0);
     const [feet, setfeet] = useState(0);
@@ -20,8 +20,8 @@ const TheForm = () => {
     const [height, setheight] = useState(0);
     const [age, setage] = useState(0);
     const [BMR, setBMR] = useState(0);
-    const [weightStatus, setWeightStatus] = useState("");
-    const [idealWeight, setidealWeight] = useState(0);
+    const [weightStatus, setWeightStatus] = useState("Overweight");
+    const [idealWeight, setidealWeight] = useState(1);
     const [maintainenceCal, setmaintainenceCal] = useState(0);
     const clickedButtonStyle = {
         color : "#05386b",
@@ -120,7 +120,7 @@ const TheForm = () => {
         <div className = {"the-form dashboard-"+currentTheme}>
             <Navbar modeChange = {modeChange} mode = {othermode}/>
             <div className={"row the-form-content the-form-"+currentTheme}>
-                <div className="col infoTab1">
+                <div className="col col-lg-6 col-sm-12 infoTab1">
                     <div className="sex">
                         <button onClick = {()=>setMale(true)} id = "malebutton" className = {male? "btn clicked-button":"btn"}>Male</button>
                         <button onClick = {()=>setMale(false)} id = "femalebutton"className = {male === false? "btn clicked-button":"btn"}>Female</button>
@@ -148,7 +148,7 @@ const TheForm = () => {
                     </div>
                     <button onClick = {submitHandler1} className ="btn submit-button">Submit</button>
                 </div>
-                <div className="col BMICol">
+                <div className="col col-lg-6 col-sm-12 BMICol">
                     {/* <BMICol BMI = {BMI} height = {height}  weight= {weight} age= {age} male = {male}/> */}
                     {BMI !== 0 && idealWeight!== 0 &&
                     <div className="BMI-class row">
@@ -165,14 +165,14 @@ const TheForm = () => {
                     </div>}
                     <div class="form-group BMI-class">
                         <p for="exampleFormControlSelect1">Activity: </p>
-                        <form>
+                        {/* <form> */}
                             <select name = "activity-form" class="form-control" id="exampleFormControlSelect1">
                                 <option value = "0">Little or No exercise</option>
                                 <option value = "1">Light: Excerise 1-3 time a week</option>
                                 <option value = "2">Moderate: Exercise 4-5 times a week</option>
                                 <option value = "3">Active: Daily Exercise or Intense workout 3-4 times a week</option>
                             </select>
-                        </form>
+                        {/* </form> */}
                     </div>
                     <form  className="checkbox  BMI-class">
                             <p>BMR estimation formula:</p>
@@ -194,9 +194,9 @@ const TheForm = () => {
                 </div>
             </div>
             <div style = {{display : "block" ,textAlign : "center"}}>
-                <button  onClick = {submitHandler2}className ="next-skip-button btn submit-button">Submit</button>
-                <button  className ="next-skip-button btn submit-button">Skip</button>
-                <button  className ="next-skip-button btn submit-button">Next</button>
+                <button  onClick = {submitHandler2}className ="next-skip-button btn">Submit</button>
+                <button  className ="next-skip-button btn">Skip</button>
+                <button  className ="next-skip-button btn">Next</button>
                 </div>
             
             {BMR === 0? null : <div style = {{textAlign : "center"}}>
