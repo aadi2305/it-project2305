@@ -10,7 +10,7 @@ const TheForm = () => {
     const [othermode, setotherMode] = useState("Dark");
     const [heightUnitToggle, setHeightUnitToggle] = useState(true);
     const [weightUnitToggle, setWeightUnitToggle] = useState(true);
-    const [BMI, setBMI] = useState(1);
+    const [BMI, setBMI] = useState(0);
     const [male, setMale] = useState(null);
     const [weight, setweight] = useState(0);
     const [feet, setfeet] = useState(0);
@@ -20,8 +20,8 @@ const TheForm = () => {
     const [height, setheight] = useState(0);
     const [age, setage] = useState(0);
     const [BMR, setBMR] = useState(0);
-    const [weightStatus, setWeightStatus] = useState("Overweight");
-    const [idealWeight, setidealWeight] = useState(1);
+    const [weightStatus, setWeightStatus] = useState("");
+    const [idealWeight, setidealWeight] = useState(0);
     const [maintainenceCal, setmaintainenceCal] = useState(0);
     const clickedButtonStyle = {
         color : "#05386b",
@@ -84,7 +84,7 @@ const TheForm = () => {
 
     const submitHandler2 = ()=>{
         
-        var theArray = $('form').serialize().split("&");
+        var theArray = $('.formboy').serialize().split("&");
 
         if(theArray[1].split("=")[1] === "1")harrisBenedict();
         else if(theArray[1].split("=")[1] === "0")mifflinSteor();
@@ -155,7 +155,7 @@ const TheForm = () => {
                         <div className="col" style = {{textAlign : "center"}}>
                             <h5 id = "ur-bmi-text">Your BMI: {BMI}</h5>
                             {/* <span className = "bmi-text">{BMI}</span> */}
-                            <h4 className = "weight-status-and-ideal-weight" style = {{fontWeight : "650"}}>{weightStatus}</h4>
+                            <h4 className = "0" style = {{fontWeight : "650"}}>{weightStatus}</h4>
                         </div>
                         <div className="col" style = {{textAlign : "center"}}>
                             <h5 id = "ideal-weight">Ideal Weight Range</h5>
@@ -166,7 +166,7 @@ const TheForm = () => {
                     <div class="form-group BMI-class">
                         <p for="exampleFormControlSelect1">Activity: </p>
                         {/* <form> */}
-                            <select name = "activity-form" class="form-control" id="exampleFormControlSelect1">
+                            <select name = "activity-form" class="form-control formboy" id="exampleFormControlSelect1">
                                 <option value = "0">Little or No exercise</option>
                                 <option value = "1">Light: Excerise 1-3 time a week</option>
                                 <option value = "2">Moderate: Exercise 4-5 times a week</option>
@@ -174,7 +174,7 @@ const TheForm = () => {
                             </select>
                         {/* </form> */}
                     </div>
-                    <form  className="checkbox  BMI-class">
+                    <form  className="checkbox  BMI-class formboy">
                             <p>BMR estimation formula:</p>
                            <label className="form-check">Mifflin-St Jeor (default)
                                 <input type="radio" name="formula" value="0" checked/>

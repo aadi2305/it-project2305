@@ -138,7 +138,14 @@
         justify-content: flex-end !important;
         font-size: 15px !important;
     }
-    #ur-bmi-text, #ideal-weight{
+    #ur-bmi-text{
+        width: 150px !important;
+        padding-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 15px !important;
+    }
+    #ideal-weight{
         width: 150px !important;
         padding-top: 10px;
         margin-left: auto;
