@@ -7,6 +7,7 @@ import {ThemeProvider} from "./contexts/ThemeContext";
 import {AuthProvider} from "./contexts/AuthContext"
 import Dashboard from "./components/Dashboard"
 import TheForm from "./components/TheForm"
+import Mainplatform from "./components/Mainplatform";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
             <Switch>
               <Route exact path="/" component={Dashboard} />
               <Route exact path="/form" component={TheForm} />
+              <Route exact path="/Dashboard" component={Mainplatform} />
             </Switch>
           </Router>
         </ThemeProvider>

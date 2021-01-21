@@ -67,14 +67,15 @@
         font-size: 40px;
     }
     .the-form-dark .form-control{
-        margin-left: auto;;
-        margin-right: auto;
-        width: 80% !important;
+        /* margin-left: auto;;
+        margin-right: auto; */
+
+        width: 84% !important;
     }
     .the-form-light .form-control{
-        margin-left: auto;;
-        margin-right: auto;
-        width: 80% !important;
+        /* margin-left: auto;;
+        margin-right: auto; */
+        width: 84% !important;
     }
     .ftnIn-class{
         width: 100%;
@@ -94,8 +95,10 @@
     .the-form input{
         /* padding: 5px 8px !important;
         width:70%!important; */
-        width: 70vw !important;
-        padding: 5px 8px !important;
+        /* width: 70vw !important;
+        padding: 5px 8px !important; */
+        width: 82.5vw !important;
+        padding: 3.5vw !important;
     }
     .the-form{
         font-size: 15px !important;
@@ -118,7 +121,7 @@
         margin-left: 0 !important;
     }
     .units{
-        padding: 3px !important;
+        padding: 8px !important;
         width: 40px !important;
     }
     .checkbox{
