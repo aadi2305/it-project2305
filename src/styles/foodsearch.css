@@ -1,0 +1,157 @@
+* p{
+    margin-bottom: 0!important;
+}
+.big-food-search .event{
+    font-size: 25px;
+    font-weight: 600;
+    margin-left: 20px;
+}
+.big-food-search{
+    height: 500px;
+    /* justify-content: center; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+}
+.mainplatform-light .food-search{
+  
+    /* height: 500px; */
+    background-color: #05386b;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+}
+.mainplatform-dark .food-search{
+    
+    /* height: 500px; */
+    background-color: #5cdb95;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+}
+.input-div{
+    display: flex;
+    padding: 5px;
+    padding-left: 20px;
+    background-color: #edf5e1;
+    border-radius: 8px;
+}
+.input-div input{
+    background-color: #edf5e1;
+    outline: 0;
+    width: 100%;
+    border: 0;
+}
+.input-div input:focus{
+    outline: 0;
+}
+.food{
+    margin-top: 10px;
+    border-radius: 8px;
+    padding: 35px;
+    background-color: #5cdb95;
+    height:max-content;
+}
+.mainplatform-light .food{
+    background-color: #5cdb95;
+}
+.mainplatform-dark .food{
+    background-color: #05386b;
+}
+.hone{
+    font-weight: 600;
+}
+.macros{
+    bottom: 0;
+    margin-top: 50px;
+    z-index: 1;
+}
+.mainplatform-light .macros{
+    background-color: #5cdb95;
+    color: #05386b;
+}
+.mainplatform-dark .macros{
+    background-color: #05386b;
+    color: #5cdb95;
+}
+.addButtonIcon{
+    font-size: 25px !important;
+    margin: 0 20px;
+    cursor: pointer;
+}
+.units-counts{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center !important;
+}
+.units{
+    cursor: pointer;
+    margin-left: 5px;
+}
+.mainplatform-light .form-control{
+    align-self: center !important;
+    border-radius: 4px;
+    border: 0;
+    background-color:#05386b;
+    color: #5cdb95;
+    width:min-content;
+}
+.mainplatform-dark .form-control{
+    align-self: center !important;
+    border-radius: 4px;
+    border: 0;
+    background-color:#5cdb95;
+    color: #05386b;
+    width:min-content;
+}
+.form-control :focus{
+    outline: 0;
+    border: 0;
+}
+.food input{
+    border-radius: 4px;
+    padding: 4px 9px;
+    height: 35px;
+    width: 40px;
+    border: 0;
+    margin-right: 5px;
+}
+.food_cals{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.mainplatform-dark .food input{
+    background-color:#5cdb95;
+    color: #05386b;
+}
+input :focus{
+    outline: 0;
+    border: 0;
+}
+.mainplatform-light .food input{
+    background-color:#05386b;
+    color: #5cdb95;
+}
+.macros{
+    text-align: center;
+}
+.macros p{
+    margin: 0;
+    font-size: 18px;
+    /* line-height: 5px; */
+}
+.macros h1{
+    font-size: 30px;
+    font-weight: 700;
+}
+.add-button{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+.add-button .btn{
+    width: 100px;
+}

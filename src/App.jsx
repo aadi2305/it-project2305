@@ -19,7 +19,7 @@ function App() {
             <Switch>
               <Route exact path="/" component={Dashboard} />
               <Route exact path="/form" component={TheForm} />
-              <Route exact path="/Dashboard" component={Mainplatform} />
+              <Route exact path="/dashboard" component={Mainplatform} />
             </Switch>
           </Router>
         </ThemeProvider>

@@ -2,3 +2,117 @@
     padding-left: 6%;
     padding-right: 6%;
 }
+.mainplatform-light{
+    background-color: #5cdb95;
+    color: #05386b;
+}
+.mainplatform-dark{
+    background-color: #05386b;
+    color: #5cdb95;
+}
+.mainplatform_row{
+    padding: 100px;
+    display: flex;
+    justify-content: center;
+    /* padding-bottom: 100px; */
+}
+.food_search, .daily_events_col{
+    flex: 1;
+}
+.daily_events_col{
+    margin: 10px;
+    max-width: 500px;
+}
+.daily_events{
+    max-height: 370px;
+    overflow: scroll;
+    
+}
+.daily_events::-webkit-scrollbar {
+    display: none;
+}
+.daily_cal{
+    margin-bottom: 50px;
+}
+.mainplatform .range-container{
+    position: relative;
+}
+.mainplatform-light .range{
+    position: relative;
+    margin-top: 10px;
+    background-color: #05386b;
+    height: 16px;
+    border-radius: 50px;
+    border: 1px solid #05386b;
+}
+.mainplatform-light .absolute-range{
+    top: -6px;
+    left: 6px;
+    z-index: 1;
+    position: absolute;
+    width: 50%;
+    margin-top: 10px;
+    background-color: #5cdb95;
+    height: 8px;
+    border-radius: 50px;
+}
+.mainplatform-dark .range{
+    position: relative;
+    margin-top: 10px;
+    background-color: #5cdb95;
+    height: 16px;
+    border-radius: 50px;
+    border: 1px solid #5cdb95;
+}
+.mainplatform-dark .absolute-range{
+    top: -6px;
+    left: 6px;
+    z-index: 1;
+    position: absolute;
+    width: 50%;
+    margin-top: 10px;
+    background-color: #05386b;
+    height: 8px;
+    border-radius: 50px;
+}
+.dailyEventComponent{
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-top: 5px;
+    height: 70px;
+    border-radius: 5px
+}
+.dailyEventComponent h5{
+    font-weight: 600;
+}
+.dailyEventComponent .cal-eaten{
+    position: absolute;
+    right: 10px;
+}
+.mainplatform-light .dailyEventComponent{
+    color : #5cdb95;
+    background-color: #05386b;
+}
+.mainplatform-dark .dailyEventComponent{
+    color : #05386b;
+    background-color: #5cdb95;
+}
+.mainplatform-light .daily-event-info{
+    border-radius: 5px;
+    margin-top: 5px;
+    /* padding: 10px;
+    height: 100px; */
+    color: #5cdb95;
+    background-color: #05386b;
+}
+.mainplatform-dark .daily-event-info{
+    border-radius: 5px;
+    margin-top: 5px;
+    /* padding: 10px;
+    height: 100px; */
+    color: #05386b;
+    background-color: #5cdb95;
+}

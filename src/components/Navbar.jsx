@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ArrowDropDownCircleOutlinedIcon from '@material-ui/icons/ArrowDropDownCircleOutlined';
 import {useTheme} from "../contexts/ThemeContext";
 import {useAuth} from "../contexts/AuthContext";
+import { Link} from "react-router-dom"
 
 
 const Navbar = (props) => {
@@ -22,15 +23,18 @@ const Navbar = (props) => {
 
     return ( 
             <nav class="navbar">
-                <h1 class="titleName" href="#">Calorix</h1>
+                <h1 onClick ={()=>window.location.href ="/"} style = {{cursor : "pointer"}} class="titleName" href="#">Calorix</h1>
                 {showToggleBtn ? null:
                 <div className = "navbar-list">
-                    <p>Home</p>
-                    <p>Princing</p>
-                    <p>Download</p>
+                    <p style = {{cursor : "pointer"}} onClick ={()=>window.location.href ="/"} >Home</p>
+                    <p style = {{cursor : "pointer"}} onClick = {()=>window.location.href ="/dashboard"}>Dashboard</p>
+                    <p style = {{cursor : "pointer"}} onClick = {()=>window.location.href ="/form"}>Profile</p>
                     <button onClick = {(e)=>{
                             e.preventDefault();
-                            if(currentUser)logout();
+                            if(currentUser){
+                                logout();
+                                window.location.href = "/";
+                            }
                             else changeLoginStatus();
                             }}  className = "btn">{currentUser? "Log Out":!loginStatus?"Log In":"Sign Up"}</button>
                     <button onClick = {()=>{

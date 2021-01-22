@@ -76,6 +76,7 @@ const TheForm = () => {
     }
     useEffect(() => {
         var theArray = $('form').serialize().split("&");
+        console.log(theArray[0].split("=")[1]);
         if(theArray[0].split("=")[1] === "0")setmaintainenceCal(1.2*BMR);
         else if(theArray[0].split("=")[1] === "1")setmaintainenceCal(1.37*BMR);
         else if(theArray[0].split("=")[1] === "2")setmaintainenceCal(1.46*BMR);
