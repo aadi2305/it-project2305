@@ -29,6 +29,9 @@ const Navbar = (props) => {
                     <p style = {{cursor : "pointer"}} onClick ={()=>window.location.href ="/"} >Home</p>
                     <p style = {{cursor : "pointer"}} onClick = {()=>window.location.href ="/dashboard"}>Dashboard</p>
                     <p style = {{cursor : "pointer"}} onClick = {()=>window.location.href ="/form"}>Profile</p>
+                   <button onClick = {()=>{
+                        props.modeChange();
+                    }} className = "btn">{props.mode} Mode</button>
                     <button onClick = {(e)=>{
                             e.preventDefault();
                             if(currentUser){
@@ -36,10 +39,10 @@ const Navbar = (props) => {
                                 window.location.href = "/";
                             }
                             else changeLoginStatus();
-                            }}  className = "btn">{currentUser? "Log Out":!loginStatus?"Log In":"Sign Up"}</button>
-                    <button onClick = {()=>{
-                        props.modeChange();
-                    }} className = "btn">{props.mode} Mode</button>
+                            }}  className = "btn">{currentUser? "Log Out":!loginStatus?"Log In":"Sign Up"
+                        }
+                    </button>
+                   
                 </div>
                 }
                 
