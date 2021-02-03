@@ -41,6 +41,10 @@
 }
 
 @media only screen and (max-width: 480px) {
+    .btn{
+        /* width: 19vw; */
+        font-size: 4vw;
+    }
     .mainbody .h1{
         text-align: center;
         font-size: 15vw !important;
@@ -186,6 +190,20 @@
     .mainplatform .dailyEventComponent h6{
         font-size: 3.9vw;
     }
+    .mainplatform .daily_events .addIcon{
+        /* display: none !important;
+         */
+         font-size: 5.5vw !important;
+    }
+    .mainplatform .daily_events .removeIcon{
+        margin: 0 2px !important;
+    }
+    .daily-event-info p, span{
+        margin-right: 5px !important;
+    }
+    .daily-event-info-inner p{
+        max-width: 120px !important;
+    }
     .mainplatform .dailyEventComponent .cal-eaten{
         width: fit-content;
     }
@@ -196,6 +214,10 @@
         /* size: ; */
         margin-left: 5px !important;
         margin-right: 0px !important;
+    }
+    .input-div{
+        padding: 5px 5px 5px 8px !important;
+        /* display: none !important; */
     }
     .daily_events::-webkit-scrollbar {
         display: none;
@@ -209,10 +231,35 @@
     .mainplatform  .food-search{
         margin: 10px 5px 5px 5px !important; 
     }
-    .mainplatform  .food-search .input-div{
+    /* .mainplatform  .food-search .input-div{
         padding: 5px 5px 5px 10px !important
-    }
+    } */
     .mainplatform  .food-search .input-div input::placeholder{
         font-size: 4vw;
     }
+    .foodsearch_event{
+        font-size: 7vw !important;
+    }
+    .hone{
+        font-size: 8vw !important;
+    }
+    .food-search .food{
+        padding: 20px !important;
+    }
+    .food-search .food_cals h4{
+        font-size: 6vw !important;
+        font-weight: 600 !important;
+    }
+    .food-search .food_cals p{
+        font-size: 4.5vw !important;
+        font-weight: 600 !important;
+    }
+    .macros_inner_div p{
+        font-size: 4vw !important;
+        font-weight: 600 !important;
+    }
+    .macros_inner_div h1{
+        font-size: 6.5vw !important;
+    }
+
 }

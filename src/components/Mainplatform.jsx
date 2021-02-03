@@ -45,7 +45,7 @@ const Mainplatform = () => {
         setInfo(!info);
    }
     useEffect(() => {
-        if((totalDailyCal/reqCal)*100 > 98)setpercentageCal(98);
+        if((totalDailyCal/reqCal)*100 > 95)setpercentageCal(96.5);
         else setpercentageCal((totalDailyCal/reqCal)*100);
     }, [totalDailyCal]);
     return ( 

@@ -204,7 +204,7 @@ const FoodSearch = (props) => {
             <div className="food-search">
                 <form onSubmit = {submitHandler} className="input-div">
                     <input onChange = {onChangeHandler}value = {searchValue} type="text" placeholder = "Enter Your Food..."/>
-                    <button className = "btn" type="submit"><SearchIcon/></button>
+                    <button className = "btn searchIcon" type="submit"><SearchIcon/></button>
                 </form>
                 {food ?
                 <div className="food">
@@ -233,15 +233,15 @@ const FoodSearch = (props) => {
                         <RemoveCircleRoundedIcon onClick = {removeIcon} className = "addButtonIcon"/>
                     </div> 
                     <div className="row macros">
-                        <div className="col text-align-center">
+                        <div className="col text-align-center macros_inner_div">
                             <p>{Currentprotein} gm</p>
                             <h1 className="hone">Protein</h1>
                         </div>
-                        <div className="col text-align-center">
+                        <div className="col text-align-center macros_inner_div">
                             <p>{Currentcarbs} gm</p>
                             <h1 className="hone">Carbs</h1>
                         </div>
-                        <div className="col text-align-center">
+                        <div className="col text-align-center macros_inner_div">
                             <p>{Currentfats} gm</p>
                             <h1 className="hone">Fats</h1> 
                         </div>
