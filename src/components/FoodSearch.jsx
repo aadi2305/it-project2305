@@ -59,11 +59,11 @@ const FoodSearch = (props) => {
         url:"https://trackapi.nutritionix.com/v2/natural/nutrients",                                                                                                                                                                                           
         data:data,                                                                                                                                                                                                                                             
         headers:{                                                                                                                                                                                                                                              
-            "x-app-id": "d98335d7",
-            "x-app-key": "77117116fe8c06aa921644dfc7026397"    
+            // "x-app-id": "d98335d7",
+            // "x-app-key": "77117116fe8c06aa921644dfc7026397"    
             
-            // "x-app-id": "9aa033cb",
-            // "x-app-key": "c5abaa4382558e3d2a6c30a31f2b5fe7"   
+            "x-app-id": "9aa033cb",
+            "x-app-key": "c5abaa4382558e3d2a6c30a31f2b5fe7"   
             }                                                                                                                                                                                                                                                      
         }).then((res)=>{
             setFood(res.data.foods[0])
@@ -103,11 +103,11 @@ const FoodSearch = (props) => {
         url:"https://trackapi.nutritionix.com/v2/natural/nutrients",                                                                                                                                                                                           
         data:data,                                                                                                                                                                                                                                             
         headers:{                                                                                                                                                                                                                                              
-            "x-app-id": "d98335d7",
-            "x-app-key": "77117116fe8c06aa921644dfc7026397"    
+            // "x-app-id": "d98335d7",
+            // "x-app-key": "77117116fe8c06aa921644dfc7026397"    
             
-            // "x-app-id": "9aa033cb",
-            // "x-app-key": "c5abaa4382558e3d2a6c30a31f2b5fe7"   
+            "x-app-id": "9aa033cb",
+            "x-app-key": "c5abaa4382558e3d2a6c30a31f2b5fe7"   
             }                                                                                                                                                                                                                                                      
         }).then((res)=>{
             setLoading(false);
@@ -190,7 +190,6 @@ const FoodSearch = (props) => {
         addToDailyCal(CurrentCals);
         changeEventCal(CurrentCals, currentEvent, "add");
     }
-    console.log(currentDate);
     return ( 
         <div className="big-food-search">
             {error ? 
