@@ -1,12 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Navbar from "./Navbar"
-import BMICol from "./BMICol";
+import axios from "../axios";
 import {useTheme} from "../contexts/ThemeContext";
+import {useAuth} from "../contexts/AuthContext"
 import "../styles/theForm.css";
 import $ from "jquery";
+import { Redirect } from 'react-router-dom';
 
 const TheForm = () => {
     const {currentTheme, updateTheme} = useTheme();
+    const  {currentUser, formStatus} = useAuth();
     const [othermode, setotherMode] = useState("Dark");
     const [heightUnitToggle, setHeightUnitToggle] = useState(true);
     const [weightUnitToggle, setWeightUnitToggle] = useState(true);
@@ -23,11 +26,27 @@ const TheForm = () => {
     const [weightStatus, setWeightStatus] = useState("");
     const [idealWeight, setidealWeight] = useState(0);
     const [maintainenceCal, setmaintainenceCal] = useState(0);
+    const [error, setError] = useState("");
+    const [userInfo, setUserInfo]= useState({});
+    const [nextButton, setNextButton] = useState(false);
+    
     const clickedButtonStyle = {
         color : "#05386b",
         backgroundColor : '#5cdb95'
     }
     
+    useEffect(() => {
+        if(currentUser){
+            axios.post("/getUserInfo", {
+                email : currentUser.email
+            }).then(res=>{
+                setUserInfo(res)
+            },err=>{
+                console.log(err);
+            })
+        }
+    }, []);
+
     const changeInchesToCm = (feet, inches)=>{
         var totalInches = parseInt(inches) + (12*feet);
         var heightValue = 2.54*totalInches;
@@ -60,9 +79,7 @@ const TheForm = () => {
         else if(e.target.id == "height")setheight(e.target.value);
         else if(e.target.id == "feet")setfeet(e.target.value);
         else if(e.target.id == "inches")setinches(e.target.value);
-        if((height !== 0 && weight !==0)|| (height !== 0 && feet !== 0&& inches !==0)){
-           
-        }
+        else if(e.target.id == "target-weight")setweightTarget(e.target.value);
         // console.log(e.target.id);
     }
     const modeChange = ()=>{
@@ -75,27 +92,52 @@ const TheForm = () => {
         updateTheme();
     }
     useEffect(() => {
-        var theArray = $('form').serialize().split("&");
-        console.log(theArray[0].split("=")[1]);
+        var theArray = $('.formboy').serialize().split("&");
+        
         if(theArray[0].split("=")[1] === "0")setmaintainenceCal(1.2*BMR);
         else if(theArray[0].split("=")[1] === "1")setmaintainenceCal(1.37*BMR);
         else if(theArray[0].split("=")[1] === "2")setmaintainenceCal(1.46*BMR);
         else if(theArray[0].split("=")[1] === "3")setmaintainenceCal(1.55*BMR);
-    }, [BMR]);
+    },[BMR, maintainenceCal]);
 
     const submitHandler2 = ()=>{
+        if(weight !== 0 && height !== 0 && age !== 0){
+            var theArray = $('.formboy').serialize().split("&");
+            if(theArray[1].split("=")[1] === "1")harrisBenedict();
+            else if(theArray[1].split("=")[1] === "0")mifflinSteor();
+            console.log(theArray);
+            if(theArray[0].split("=")[1] === "0")setmaintainenceCal(1.2*BMR);
+            else if(theArray[0].split("=")[1] === "1")setmaintainenceCal(1.37*BMR);
+            else if(theArray[0].split("=")[1] === "2")setmaintainenceCal(1.46*BMR);
+            else if(theArray[0].split("=")[1] === "3")setmaintainenceCal(1.55*BMR);
+        }else{
+            if(weight === 0)setError("Enter Your Weight");
+            else if(height === 0)setError("Enter Your Height");
+            else if(age === 0)setError("Enter Your Age");
+        }
         
-        var theArray = $('.formboy').serialize().split("&");
-
-        if(theArray[1].split("=")[1] === "1")harrisBenedict();
-        else if(theArray[1].split("=")[1] === "0")mifflinSteor();
-        console.log(BMR);
-        if(theArray[0].split("=")[1] === "0")setmaintainenceCal(1.2*BMR);
-        else if(theArray[0].split("=")[1] === "1")setmaintainenceCal(1.37*BMR);
-        else if(theArray[0].split("=")[1] === "2")setmaintainenceCal(1.46*BMR);
-        else if(theArray[0].split("=")[1] === "3")setmaintainenceCal(1.55*BMR);
     }
+    useEffect(() => {
+        window.location.href = "/dashboard";
+    }, [nextButton]);
+    const nextButtonHandler = ()=>{
+        var sex = "";
+        if(male)sex = "Male";
+        else if (!male) sex = "Female"
+        axios.post("/updateUser", {
+            email : currentUser.email,
+            sex : sex,
+            age : age,
+            weight : weight,
+            height : height,
+            targetWeight : weightTarget,
+            calReq : maintainenceCal.toFixed(1)
+        }).then((res)=>console.log(res),
+                err=>{if(err)console.log(err);})
 
+        setNextButton(true);
+
+    }
     const submitHandler1 = ()=>{
         var heightValue = 0;
         if(!heightUnitToggle)heightValue = changeInchesToCm(feet, inches)
@@ -117,11 +159,18 @@ const TheForm = () => {
         else if(!male && hegihtInInches > 0)setidealWeight((49 + (1.7*hegihtInInches)).toFixed(0))
     }
     
+    console.log("formStatus: " + formStatus);
     return ( 
         <div className = {"the-form dashboard-"+currentTheme}>
+            {/* {formStatus? <Redirect to = "/dashboard" />:null} */}
             <Navbar modeChange = {modeChange} mode = {othermode}/>
             <div className={"row the-form-content the-form-"+currentTheme}>
                 <div className="col col-lg-6 col-sm-12 infoTab1">
+                    {error ? 
+                    <div class="alert alert-danger" role="alert">
+                        {error}
+                    </div>
+                    :null}
                     <div className="sex">
                         <button onClick = {()=>setMale(true)} id = "malebutton" className = {male? "btn clicked-button":"btn"}>Male</button>
                         <button onClick = {()=>setMale(false)} id = "femalebutton"className = {male === false? "btn clicked-button":"btn"}>Female</button>
@@ -188,7 +237,7 @@ const TheForm = () => {
                     </form>
                     <div className="BMI-class">
                         <p>Weight Target: </p>
-                        <input placeholder = "Target Weight..." autoComplete = "off" min = "0" id = "weight"onChange = {onChangeHandler} type="number" min = "0" />
+                        <input placeholder = "Target Weight..." autoComplete = "off" min = "0" id = "target-weight"onChange = {onChangeHandler} type="number" min = "0" />
                         <span onClick = {()=>setWeightUnitToggle(!weightUnitToggle)}  className = "units">{weightUnitToggle?"Kg":"Pd"}</span>
                     </div>
                    
@@ -197,7 +246,7 @@ const TheForm = () => {
             <div style = {{display : "block" ,textAlign : "center"}}>
                 <button  onClick = {submitHandler2}className ="next-skip-button btn">Submit</button>
                 <button  className ="next-skip-button btn">Skip</button>
-                <button  className ="next-skip-button btn">Next</button>
+                <button onClick = {nextButtonHandler} className ="next-skip-button btn">Next</button>
                 </div>
             
             {BMR === 0? null : <div style = {{textAlign : "center"}}>

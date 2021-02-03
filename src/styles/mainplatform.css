@@ -1,9 +1,10 @@
 .mainplatform{
     padding-left: 6%;
     padding-right: 6%;
+    padding-bottom: 100px;
 }
 .mainplatform-light{
-    background-color: #5cdb95;
+    background: #5cdb95;
     color: #05386b;
 }
 .mainplatform-dark{
@@ -11,25 +12,54 @@
     color: #5cdb95;
 }
 .mainplatform_row{
-    padding: 100px;
-    display: flex;
-    justify-content: center;
-    /* padding-bottom: 100px; */
+    padding: 20px;
+    display: flex; 
+    justify-content: space-around;
 }
-.food_search, .daily_events_col{
-    flex: 1;
+.calorie_eaten_info{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+.infoIcon{
+    cursor: pointer;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+.calorie_eaten_info h2{
+    margin-bottom: 0;
 }
 .daily_events_col{
     margin: 10px;
     max-width: 500px;
 }
+    
 .daily_events{
     max-height: 370px;
-    overflow: scroll;
+    /* width:500px; */
+    overflow-y: scroll;
+    overflow-x: hidden;
     
 }
 .daily_events::-webkit-scrollbar {
     display: none;
+    width: 6px;
+    /* cursor: pointer; */
+}
+   
+.daily_events::-webkit-scrollbar-thumb {
+  background-color: #05386b;
+  /* outline: 1px solid slategrey; */
+}
+body::-webkit-scrollbar {
+    width: 6px;
+    /* cursor: pointer; */
+}
+   
+body::-webkit-scrollbar-thumb {
+  background-color: #05386b;
+  /* outline: 1px solid slategrey; */
 }
 .daily_cal{
     margin-bottom: 50px;
@@ -79,19 +109,28 @@
     position: relative;
     cursor: pointer;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 15px;
     margin-top: 5px;
     height: 70px;
     border-radius: 5px
 }
+.daily_cal_date{
+    margin-bottom: 20px;
+}
 .dailyEventComponent h5{
     font-weight: 600;
+    margin-bottom: 0 !important;
 }
-.dailyEventComponent .cal-eaten{
-    position: absolute;
-    right: 10px;
+.dailyEventComponent h6{
+    margin-bottom: 0 !important;
 }
+/* .dailyEventComponent .cal-eaten{
+    display: flex;
+    justify-content: space-between;
+    width: 30%; 
+} */
 .mainplatform-light .dailyEventComponent{
     color : #5cdb95;
     background-color: #05386b;
@@ -100,19 +139,105 @@
     color : #05386b;
     background-color: #5cdb95;
 }
+.dailyEventComponent :hover{
+    border: 0 !important;
+    /* background-color: red !important; */
+}
+.mainplatform-light .my-collapsible__toggle :hover{
+    color : #05386b;
+    background-color: #5cdb95;
+    border: 2px solid #05386b;
+}
+.mainplatform-dark .my-collapsible__toggle :hover{
+    color : #5cdb95;
+    background-color: #05386b;
+    border: 2px solid #5cdb95;
+}
 .mainplatform-light .daily-event-info{
     border-radius: 5px;
-    margin-top: 5px;
-    /* padding: 10px;
-    height: 100px; */
+    margin-top: 1px;
+    padding: 15px;
     color: #5cdb95;
     background-color: #05386b;
 }
 .mainplatform-dark .daily-event-info{
     border-radius: 5px;
-    margin-top: 5px;
-    /* padding: 10px;
-    height: 100px; */
+    margin-top: 1px;
+    padding: 15px;
     color: #05386b;
     background-color: #5cdb95;
+}
+.daily-event-info p, span{
+    font-size: 15px;
+    font-weight: 500;
+    margin-right: 10px;
+}
+.daily-event-info-inner{
+    display: flex;
+    justify-content: space-between;
+}
+.daily-event-info-inner .removeIcon{
+    cursor: pointer;
+    font-size: 17px;
+}
+.toggleEvent{
+    display: flex;
+    align-items: center;
+}
+.mainplatform-light .daily_events .addIcon, .removeIcon{
+    cursor: pointer;
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 30px;
+    color: #5cdb95;
+    background-color: #05386b;
+}
+.mainplatform-dark .daily_events .addIcon, .removeIcon{
+    cursor: pointer;
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 30px;
+    color: #05386b;
+    background-color: #5cdb95;
+}
+.mainplatform-light .daily_events .addIcon:hover{
+    color: #05386b;
+    background-color: #5cdb95;
+}
+.mainplatform-dark .daily_events .addIcon:hover{
+    color: #5cdb95;
+    background-color: #05386b;
+}
+.mainplatform-light .daily_events .removeIcon:hover{
+    color: #5cdb95;
+    background-color: #05386b;
+}
+.mainplatform-dark .daily_events .removeIcon:hover{
+    color: #05386b;
+    background-color: #5cdb95;
+}
+.react-datepicker__header {
+    /* z-index: 1 !important; */
+    text-align: center;
+    /* background-color: #5cdb95; */
+    border-bottom: 0px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding-top: 8px;
+    position: relative;
+  }
+.react-datepicker {
+    /* z-index: -1; */
+    font-size: 0.8rem;
+    background-color: #05386b;
+    /* color: white !important; */
+    border: 0px;
+    border-radius: 0;
+    display: inline-block;
+    position: relative;
+  }
+.daily_event_info_loading{
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
 }

@@ -172,4 +172,47 @@
     .next-skip-button{
         margin-left: 0;
     }
+    .mainplatform .daily_cal h2{
+        font-size: 6vw !important;
+        font-weight: 600;
+    }
+    .mainplatform  .daily_events_col{
+        padding : 0px 10px;
+    }
+    
+    .mainplatform .dailyEventComponent h5{
+        font-size: 4.5vw;
+    }
+    .mainplatform .dailyEventComponent h6{
+        font-size: 3.9vw;
+    }
+    .mainplatform .dailyEventComponent .cal-eaten{
+        width: fit-content;
+    }
+    .mainplatform .mainplatform_row{
+        padding: 20px 0;
+    }
+    .addIcon{
+        /* size: ; */
+        margin-left: 5px !important;
+        margin-right: 0px !important;
+    }
+    .daily_events::-webkit-scrollbar {
+        display: none;
+    }
+    .big-food-search{
+        justify-content:flex-start !important;
+    }
+    .mainplatform  .food_search{
+        padding : 0px 10px;
+    }
+    .mainplatform  .food-search{
+        margin: 10px 5px 5px 5px !important; 
+    }
+    .mainplatform  .food-search .input-div{
+        padding: 5px 5px 5px 10px !important
+    }
+    .mainplatform  .food-search .input-div input::placeholder{
+        font-size: 4vw;
+    }
 }

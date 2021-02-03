@@ -1,46 +1,71 @@
 import React, { useState, useEffect, useRef } from 'react';
 import "../styles/foodsearch.css"
 import SearchIcon from '@material-ui/icons/Search';
-import axios from "axios";
+import axios1 from "axios";
+import axios from "../axios"
 import AddCircleRoundedIcon from '@material-ui/icons/AddCircleRounded';
 import RemoveCircleRoundedIcon from '@material-ui/icons/RemoveCircleRounded';
+import {useAuth} from "../contexts/AuthContext";
 import $ from "jquery"
+
 const FoodSearch = (props) => {
 
-    const [searchValue, setsearchValue] = useState("pohe");
-    const [food, setFood]= useState([""]);
+    const [searchValue, setsearchValue] = useState();
+    const [food, setFood]= useState();
     const [grams, setgrams]= useState(0);
-    const [oneGramprotein, setProtein] = useState(0.5);
-    const [oneGramcarbs, setCarbs] = useState(0.5);
-    const [oneGramfats, setFats] = useState(0.5);
-    const [oneGramCals, setCals] = useState(0.5);
-    const [Currentprotein, setCurrentProtein] = useState(0.5);
-    const [Currentcarbs, setCurrentCarbs] = useState(0.5);
-    const [Currentfats, setCurrentFats] = useState(0.5);
-    const [CurrentCals, setCurrentCals] = useState(0.5);
-    const [unitValue, setUnitValue] = useState(1);
-    const [event, setevent] = useState("Breakfast");    
-
+    const [oneGramprotein, setProtein] = useState(0);
+    const [oneGramcarbs, setCarbs] = useState(0);
+    const [oneGramfats, setFats] = useState(0);
+    const [oneGramCals, setCals] = useState(0);
+    const [Currentprotein, setCurrentProtein] = useState(0);
+    const [Currentcarbs, setCurrentCarbs] = useState(0);
+    const [Currentfats, setCurrentFats] = useState(0);
+    const [CurrentCals, setCurrentCals] = useState(0);
+    const [unitValue, setUnitValue] = useState(0);
+    const {currentUser,currentDate, currentEvent, currentEvent2, setEvent, addContent,foodAddedHandler,foodAdded,addToDailyCal, changeEventCal} = useAuth();
+    const [error, seterror] = useState("")
+    const [success, setSuccess] = useState("");
+    const [unitNumber, setUnitNumber] = useState(1);
+    const [loading, setLoading] = useState(false);
+    
+   
+    const gramsArray = [1,2,3,4,5,10,20,30,40,50,100,150,200,250,300,350,400,450,500,600,700,800,900,1000];
+    const unitsArray = ["grams", "cups", "bowls", "milliliters", ""];
+    
+    // console.log(currentEvent);
     const onChangeHandler = (e)=>{
         setsearchValue(e.target.value);
+        setFood();
     }
-    const submitHandler = (e)=>{
-        setgrams(0)
-        e.preventDefault();
+
+    useEffect(() => {
+        seterror("");
+        setSuccess("");
+    }, [currentEvent]);
+
+    useEffect(() => {
+        setUnitNumber(gramsArray[grams])
+    }, [grams]);
+
+    useEffect(() => {
+        // console.log("Unit value changed");
+        // console.log(unitNumber);
         var data = {
-            "query" : searchValue + " 1 gram"
+            "query" : unitNumber +"  "+ searchValue + " " + unitsArray[$('.units').serialize().split("=")[1]]
         }
-        axios(                                                                                                                                                                                                                                                   
+        axios1(                                                                                                                                                                                                                                                   
         {                                                                                                                                                                                                                                                        
         method:'post',                                                                                                                                                                                                                                          
         url:"https://trackapi.nutritionix.com/v2/natural/nutrients",                                                                                                                                                                                           
         data:data,                                                                                                                                                                                                                                             
         headers:{                                                                                                                                                                                                                                              
             "x-app-id": "d98335d7",
-            "x-app-key": "77117116fe8c06aa921644dfc7026397"                                                                                                                                                                                                               
+            "x-app-key": "77117116fe8c06aa921644dfc7026397"    
+            
+            // "x-app-id": "9aa033cb",
+            // "x-app-key": "c5abaa4382558e3d2a6c30a31f2b5fe7"   
             }                                                                                                                                                                                                                                                      
         }).then((res)=>{
-            // console.log(res.data.foods[0]);
             setFood(res.data.foods[0])
             setCurrentCals(res.data.foods[0].nf_calories);
             setCals(res.data.foods[0].nf_calories);
@@ -53,6 +78,53 @@ const FoodSearch = (props) => {
         },(err)=>{
             console.log(err);
         })
+    }, [unitValue]);
+
+    // console.log($('.units').serialize().split("=")[1]);
+    
+    const submitHandler = (e)=>{
+        setSuccess("");
+        seterror("");
+        // setLoading(true);
+        if(currentEvent === ""){
+            e.preventDefault();
+            seterror("Please Click on any + Icon");
+        }else{
+        setgrams(0);
+        e.preventDefault();
+        setLoading(true);
+        // console.log(unitsArray[$('.units').serialize().split("=")[1]]);
+        var data = {
+            "query" : unitNumber +"  "+ searchValue + " grams" 
+        }
+        axios1(                                                                                                                                                                                                                                                   
+        {                                                                                                                                                                                                                                                        
+        method:'post',                                                                                                                                                                                                                                          
+        url:"https://trackapi.nutritionix.com/v2/natural/nutrients",                                                                                                                                                                                           
+        data:data,                                                                                                                                                                                                                                             
+        headers:{                                                                                                                                                                                                                                              
+            "x-app-id": "d98335d7",
+            "x-app-key": "77117116fe8c06aa921644dfc7026397"    
+            
+            // "x-app-id": "9aa033cb",
+            // "x-app-key": "c5abaa4382558e3d2a6c30a31f2b5fe7"   
+            }                                                                                                                                                                                                                                                      
+        }).then((res)=>{
+            setLoading(false);
+            setFood(res.data.foods[0])
+            setCurrentCals(res.data.foods[0].nf_calories);
+            setCals(res.data.foods[0].nf_calories);
+            setCurrentFats(res.data.foods[0].nf_total_fat);
+            setFats(res.data.foods[0].nf_total_fat);
+            setCurrentCarbs(res.data.foods[0].nf_total_carbohydrate);
+            setCarbs(res.data.foods[0].nf_total_carbohydrate);
+            setCurrentProtein(res.data.foods[0].nf_protein);
+            setProtein(res.data.foods[0].nf_protein);
+        },(err)=>{
+            seterror(capitaliseFirstLetter(searchValue) + " Is Not Available")
+            setLoading(false);
+            console.log(err);
+        })}
         
     }
     const capitaliseFirstLetter = word=>{
@@ -66,7 +138,8 @@ const FoodSearch = (props) => {
         });
         return word;
     }
-    const gramsArray = [1,2,3,4,5,10,20,30,40,50,100,150,200,250,300,350,400,450,500,600,700,800,900,1000]
+    
+    // console.log(gramsArray[grams] +"  "+ searchValue + " " + unitsArray[$('.units').serialize().split("=")[1]]);
     const addIcon = ()=>{
         setgrams(grams + 1)
     }
@@ -74,24 +147,64 @@ const FoodSearch = (props) => {
         if(grams !== 0)setgrams(grams - 1)
         
     }
+    // console.log(oneGramCals);
     useEffect(()=>{
-        
-        setCurrentCals(Math.round(((oneGramCals*gramsArray[grams]))*100)/100);
-        setCurrentFats(Math.round(((oneGramfats*gramsArray[grams]))*100)/100);
-        setCurrentCarbs(Math.round(( (oneGramcarbs*gramsArray[grams]))*100)/100);
-        setCurrentProtein(Math.round(((oneGramprotein*gramsArray[grams]))*100)/100);
-        
-    },[grams])
-    // console.log($(".units").serialize());
+        if(unitNumber === ""){
+            setCurrentCals(Math.round(((oneGramCals*0))*100)/100);
+            setCurrentFats(Math.round(((oneGramfats*0))*100)/100);
+            setCurrentCarbs(Math.round(( (oneGramcarbs*0))*100)/100);
+            setCurrentProtein(Math.round(((oneGramprotein*0))*100)/100);
+        }
+        else{setCurrentCals(Math.round(((oneGramCals*unitNumber))*100)/100);
+        setCurrentFats(Math.round(((oneGramfats*unitNumber))*100)/100);
+        setCurrentCarbs(Math.round(( (oneGramcarbs*unitNumber))*100)/100);
+        setCurrentProtein(Math.round(((oneGramprotein*unitNumber))*100)/100);}
+    },[grams, unitNumber])
+
     const inputChange = (e)=>{
-        console.log(e.target.value);
+        // console.log(e.target.value);
+        setUnitNumber(e.target.value);
     }
+    // console.log(searchValue);
+    const addHandler = ()=>{
+        axios.post("/addFood", {
+            date : currentDate,
+            event: currentEvent,
+            email : currentUser.email,
+            food : capitaliseFirstLetter(searchValue),
+            calories : CurrentCals,
+            fats : Currentfats,
+            protein : Currentprotein,
+            carbs : Currentcarbs,
+            quantity : gramsArray[grams]
+        }).then(res=>{
+            console.log(res);
+        },err=>{
+            console.log(err);
+        })
+        setSuccess(capitaliseFirstLetter(searchValue) + " has been added to "+ currentEvent);
+        // setEvent("");
+        setsearchValue("");
+        setFood();
+        addContent();
+        addToDailyCal(CurrentCals);
+        changeEventCal(CurrentCals, currentEvent, "add");
+    }
+    console.log(currentDate);
     return ( 
         <div className="big-food-search">
-            <p className = "event">{event}</p>
+            {error ? 
+            <div class="alert alert-danger" role="alert">
+                {error}
+            </div>:null}
+            {success ? 
+            <div class="alert alert-success" role="alert">
+                {success}
+            </div>:null}
+            <p className = "foodsearch_event">{currentEvent}</p>
             <div className="food-search">
                 <form onSubmit = {submitHandler} className="input-div">
-                    <input onChange = {onChangeHandler} type="text" placeholder = "Enter Your Food..."/>
+                    <input onChange = {onChangeHandler}value = {searchValue} type="text" placeholder = "Enter Your Food..."/>
                     <button className = "btn" type="submit"><SearchIcon/></button>
                 </form>
                 {food ?
@@ -99,22 +212,24 @@ const FoodSearch = (props) => {
                     <div className="row">
                         <div className="col">
                             
-                            <h1 className="hone">{capitaliseFirstLetter("pohe")}</h1>
+                            <h1 className="hone">{capitaliseFirstLetter(searchValue)}</h1>
                         </div>
                         <div className="col food_cals">
                             <h4>{CurrentCals} Cals</h4>
-                            <p>{gramsArray[grams]} gms</p>
+                            <p>{$('.units').serialize().split("=")[1] != 4 ?unitNumber + " " + unitsArray[$('.units').serialize().split("=")[1]] : unitNumber + " " + capitaliseFirstLetter(searchValue) }</p>
                         </div>
                     </div>
                     <div className="units-counts">
                         <AddCircleRoundedIcon onClick = {addIcon} className = "addButtonIcon"/>
-                        <input onChage = {inputChange} type="number" value = {gramsArray[grams  ]} />
-                        <select name = "units" class="form-control units" id="exampleFormControlSelect1">
+                        <input onChange = {inputChange} type="number" value = {unitNumber} />
+                        <select onClick = {()=>{
+                            if(unitValue !== $('.units').serialize().split("=")[1])setUnitValue( $('.units').serialize().split("=")[1])
+                        }} name = "units" className ="form-control units" id="exampleFormControlSelect1">
                             <option value = "0">Grams</option>
                             <option value = "1">Cup</option>
                             <option value = "2">Bowl</option>
                             <option value = "3">mL</option>
-                            <option value = "4">{food.food_name}</option>
+                            <option value = "4">{capitaliseFirstLetter(searchValue)}</option>
                         </select>
                         <RemoveCircleRoundedIcon onClick = {removeIcon} className = "addButtonIcon"/>
                     </div> 
@@ -133,12 +248,16 @@ const FoodSearch = (props) => {
                         </div>
                     </div>
                     <div className = "add-button">
-                        <button className = "btn">Add</button>
+                        <button onClick = {()=>{
+                            addHandler();    
+                        }} className = "btn">Add</button>
                     </div>
                 </div>
                 
-                :null}
+                :null
+                }
             </div>
+            {loading ? <p className = "foodsearch_event" style = {{textAlign : "center"}}>Loading...</p>:null}
         </div>
      );
 }

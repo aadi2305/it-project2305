@@ -4,15 +4,20 @@ import {useTheme} from "../contexts/ThemeContext";
 import FoodSearch from "./FoodSearch"
 import DailyEventCol from "./DailyEventCol";
 import "../styles/mainplatform.css"
-import Calendar from 'react-calendar';
+import axios from "../axios"
+import {useAuth} from "../contexts/AuthContext"
+import Info from "./Info";
 
 const Mainplatform = () => {
 
+    const {currentEvent, currentUser,contentAdd,setEvent,currentEvent2,foodAddedHandler,foodAdded,totalDailyCal,changeTotalDailyCal, currentDate} = useAuth();
     const [othermode, setotherMode] = useState("Dark");
     const [reqCal, setReqCal] = useState(2210);
-    const [eatenCal, setEatenCal] = useState(1200);
+    const [info, setInfo] = useState(false);
     const [percentageCal, setpercentageCal] = useState(0);
     const {currentTheme, updateTheme} = useTheme();
+    const [userInfo, setUserInfo] = useState();
+   
 
     const modeChange = ()=>{
         if(currentTheme === "dark"){
@@ -25,19 +30,34 @@ const Mainplatform = () => {
     }
 
     useEffect(() => {
-        if((eatenCal/reqCal)*100 > 98)setpercentageCal(98);
-        else setpercentageCal((eatenCal/reqCal)*100);
-    }, [eatenCal]);
+        axios.post("/getUserInfo", {
+            email : currentUser.email,
+            date : currentDate
+        }).then(res=>{
+            setUserInfo(res.data);
+            changeTotalDailyCal(res.data.totalCal);
+        },err=>{
+            console.log(err);
+        })
+        
+    }, [currentDate]);
+   const infoHandler = ()=>{
+        setInfo(!info);
+   }
+    useEffect(() => {
+        if((totalDailyCal/reqCal)*100 > 98)setpercentageCal(98);
+        else setpercentageCal((totalDailyCal/reqCal)*100);
+    }, [totalDailyCal]);
     return ( 
         <div className={"mainplatform dashboard-"+currentTheme}>
             <Navbar modeChange = {modeChange} mode = {othermode}/>
-            <div className={" mainplatform_row mainplatform-"+currentTheme}>
+            <div className={" mainplatform_row row mainplatform-"+currentTheme}>
                  
-                <div className="daily_events_col">
-                    <DailyEventCol  reqCal = {reqCal} eatenCal = {eatenCal} percentageCal = {percentageCal}/>
+                <div className="daily_events_col col col-12 col-sm-12 col-md-12 col-lg-6  col-xl-6">
+                    <DailyEventCol infoHandler = {infoHandler}  reqCal = {reqCal} eatenCal = {Math.round(totalDailyCal * 100) / 100} percentageCal = {percentageCal}/>
                 </div>
-                <div className="food_search">
-                    <FoodSearch />
+                <div className="food_search col col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                    {info? <Info theme = {currentTheme} />: <FoodSearch />}
                 </div>
             </div>
             

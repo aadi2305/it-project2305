@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-
+import axios from "../axios";
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import {useAuth} from "../contexts/AuthContext";
@@ -9,14 +9,14 @@ import { Redirect } from 'react-router-dom';
 const Mainbody = () => {
 
     const [passwordShow, setpasswordShow] = useState(false);
-    
     const [error, setError] = useState("");
+    const [userInfo, setUserInfo]= useState({});
     const passoword = useRef(null);
     const confirmPassoword = useRef(null);
     const email = useRef(null);
     const fullName = useRef(null);
 
-    const {signup, login, currentUser} = useAuth();
+    const {signup, login, currentUser, changeFormStatus, formStatus} = useAuth();
     const{loginStatus} = useTheme()
     
     const showPassword = (e)=>{
@@ -37,6 +37,28 @@ const Mainbody = () => {
         catch(err) {
           console.log(err);
         }
+        axios.post("/createUser", {
+            email : email.current.value,
+            name : fullName.current.value,
+            age : 0,
+            weight : 0,
+            height : 0,
+            targetWeight: 0,
+            calReq : 0,
+            targetCal : 0,
+            dailyData : {
+                totalCal : 0,
+                breakfast : [],
+                morningSnack : [],
+                lunch : [],
+                eveningSnack : [],
+                dinner : []
+            }
+        }).then(res=>{
+            console.log(res);
+        },err=>{
+            console.log(err);
+        })
     }
     
     const submitLogInHandler = (e)=>{
@@ -46,12 +68,20 @@ const Mainbody = () => {
         }
         catch(err) {
           console.log(err);
-        }                
+        }   
+        axios.post("/getUserInfo", {
+            email : email.current.value
+        }).then(res=>{
+            console.log(res);
+            if(res.data.age !== 0)changeFormStatus();
+        },err=>{
+            console.log(err);
+        })             
     }
-
+    console.log("formStatus: " + formStatus);
     return ( 
         <div className="mainbody container-fluid">
-            {currentUser && <Redirect to = "/form" />}
+            {currentUser ? <Redirect to = "/form" />:null}
             <div className="row">
                 <div className="col">
                     <h1 className = "h1">Count Those Calories</h1>

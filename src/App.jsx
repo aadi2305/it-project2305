@@ -8,7 +8,7 @@ import {AuthProvider} from "./contexts/AuthContext"
 import Dashboard from "./components/Dashboard"
 import TheForm from "./components/TheForm"
 import Mainplatform from "./components/Mainplatform";
-
+import Info from "./components/Info";
 
 function App() {
   return (
@@ -18,6 +18,7 @@ function App() {
           <Router>
             <Switch>
               <Route exact path="/" component={Dashboard} />
+              <Route exact path="/info" component={Info} />
               <Route exact path="/form" component={TheForm} />
               <Route exact path="/dashboard" component={Mainplatform} />
             </Switch>

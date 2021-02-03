@@ -189,6 +189,12 @@ input[type=number]::-webkit-outer-spin-button {
 label{
     margin-bottom: 0;
 }
+.alert{
+    width :270px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
 .checkbox p{
     margin-bottom: 0;
 }

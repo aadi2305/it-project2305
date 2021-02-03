@@ -1,10 +1,11 @@
 * p{
     margin-bottom: 0!important;
 }
-.big-food-search .event{
+.foodsearch_event{
     font-size: 25px;
     font-weight: 600;
-    margin-left: 20px;
+    /* margin-left: 20px; */
+    text-align: center;
 }
 .big-food-search{
     height: 500px;
@@ -75,10 +76,15 @@
     background-color: #05386b;
     color: #5cdb95;
 }
-.addButtonIcon{
+.mainplatform .addButtonIcon{
     font-size: 25px !important;
+    /* width: 200px; */
+    /* display: none; */
     margin: 0 20px;
     cursor: pointer;
+}
+.mainplatform .units-counts input{
+    width: 60px;
 }
 .units-counts{
     margin-top: 30px;
@@ -86,9 +92,11 @@
     justify-content: center;
     align-items: center !important;
 }
-.units{
+.mainplatform .units{
     cursor: pointer;
     margin-left: 5px;
+    /* display: none; */
+    width: 200px !important;
 }
 .mainplatform-light .form-control{
     align-self: center !important;
