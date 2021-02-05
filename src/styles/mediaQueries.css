@@ -261,5 +261,14 @@
     .macros_inner_div h1{
         font-size: 6.5vw !important;
     }
-
+    .info h2{
+        width: 140px !important;
+    }
+    .macros_info{
+        font-size: 4vw !important;
+    }
+    .macros_name{
+ 
+        font-size: 6vw !important;
+    }
 }

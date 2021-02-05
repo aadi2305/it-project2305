@@ -56,17 +56,22 @@ const Navbar = (props) => {
                         Dropdown button
                     </ArrowDropDownCircleOutlinedIcon>
                     <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                        <li><a className="dropdown-item" href="#">Home</a></li>
-                        <li><a className="dropdown-item" href="#">Princing</a></li>
-                        <li><a className="dropdown-item" href="#">Download</a></li>
-                        <button onClick = {(e)=>{
-                            e.preventDefault();
-                            if(currentUser)logout();
-                            else changeLoginStatus();
-                            }}  className = "btn dropdown-item">{currentUser? "Log Out":!loginStatus?"Log In":"Sign Up"}</button>
+                        <li><a className="dropdown-item" href="/">Home</a></li>
+                        <li><a className="dropdown-item" href="/dashboard">Dashboard</a></li>
+                        <li><a className="dropdown-item" href="/form">Profile</a></li>
                         <button onClick = {()=>{
                         props.modeChange();
-                        }} className = "btn dropdown-item">{props.mode} Mode</button>
+                        }} className = "dropdown-item">{props.mode} Mode</button>
+                         <button onClick = {(e)=>{
+                            e.preventDefault();
+                            if(currentUser){
+                                logout();
+                                window.location.href = "/";
+                            }
+                            else changeLoginStatus();
+                            }}  className = "dropdown-item">{currentUser? "Log Out":!loginStatus?"Log In":"Sign Up"
+                            }
+                        </button>
                     </ul>
                 </div>
                 :null}

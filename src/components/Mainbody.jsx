@@ -5,9 +5,10 @@ import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import {useAuth} from "../contexts/AuthContext";
 import {useTheme} from "../contexts/ThemeContext";
 import { Redirect } from 'react-router-dom';
+import firebase from "firebase/app"
 
 const Mainbody = () => {
-
+    console.log(firebase.auth.Error());
     const [passwordShow, setpasswordShow] = useState(false);
     const [error, setError] = useState("");
     const [userInfo, setUserInfo]= useState({});
@@ -15,6 +16,8 @@ const Mainbody = () => {
     const confirmPassoword = useRef(null);
     const email = useRef(null);
     const fullName = useRef(null);
+    const [signedUp, setSignedUp] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(false);
 
     const {signup, login, currentUser, changeFormStatus, formStatus} = useAuth();
     const{loginStatus} = useTheme()
@@ -33,6 +36,7 @@ const Mainbody = () => {
 
         try {
             signup(email.current.value,passoword.current.value);
+            setSignedUp(true);
         }
         catch(err) {
           console.log(err);
@@ -73,15 +77,23 @@ const Mainbody = () => {
             email : email.current.value
         }).then(res=>{
             console.log(res);
+            setError("Email/Password is not correct");
             if(res.data.age !== 0)changeFormStatus();
         },err=>{
             console.log(err);
-        })             
+        })  
+        setLoggedIn(true);           
     }
     console.log("formStatus: " + formStatus);
+
+    // useEffect(() => {
+    //     window.location.href
+    // }, [currentUser]);
     return ( 
         <div className="mainbody container-fluid">
-            {currentUser ? <Redirect to = "/form" />:null}
+            {currentUser && signedUp ? <Redirect to = "/form" />:null}
+            {currentUser && loggedIn ? <Redirect to = "/dashboard" />:null}
+            {/* {currentUser ? <Redirect to = "/form" />:null} */}
             <div className="row">
                 <div className="col">
                     <h1 className = "h1">Count Those Calories</h1>

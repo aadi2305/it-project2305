@@ -12,6 +12,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import Grid from '@material-ui/core/Grid';
 import InfoIcon from '@material-ui/icons/Info';
 import { useHistory } from "react-router-dom";
+import { Redirect } from 'react-router-dom';
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
@@ -29,6 +30,30 @@ const DailyEventCol = (props) => {
     const [dinnerinfo, setdinnerInfo] = useState();
     const [selectedDate, setSelectedDate] = React.useState(new Date().toDateString());
     const [isOpen, setIsOpen] = useState(false);
+    const [currentEventChange, setCurrentEventChange] = useState(false);
+    const [infoClicked, setInfoClicked] = useState(false);
+    
+    function useWindowSize() {
+        const [windowSize, setWindowSize] = useState({
+          width: undefined,
+          height: undefined,
+        });
+      
+        useEffect(() => {
+          function handleResize() {
+            setWindowSize({
+              width: window.innerWidth,
+              height: window.innerHeight,
+            });
+          }
+          window.addEventListener("resize", handleResize);
+          handleResize();
+          return () => window.removeEventListener("resize", handleResize);
+        }, []);
+        return windowSize;
+      }
+
+    const size = useWindowSize().width;
 
     const handleDateChange = (date) => {
         setSelectedDate(date.toDateString());
@@ -40,7 +65,17 @@ const DailyEventCol = (props) => {
         let path = `/info`; 
         history.push(path);
     }
-
+    useEffect(() => {
+        
+        axios.post("/getUserHealthInfo", {
+            email : currentUser.email,
+            date : selectedDate
+        }).then(res=>{
+            setUserInfo(res.data);
+        },err=>{
+            console.log(err);
+        })
+    }, []);
     useEffect(() => {
     axios.post("/getUserInfo", {
         email : currentUser.email,
@@ -73,7 +108,6 @@ const DailyEventCol = (props) => {
             email : currentUser.email,
             date : selectedDate
         }).then(res=>{
-            setUserInfo(res.data);
             var totalCalories = 0;
             res.data.breakfast.forEach(element => {
                 totalCalories += element.calories
@@ -113,7 +147,7 @@ const DailyEventCol = (props) => {
         changeDate(selectedDate)
     }, [selectedDate]);
     
-    // console.log(userInfo.dailyData.total);
+
 
     
     const deleteFood = (food)=>{
@@ -175,13 +209,15 @@ const DailyEventCol = (props) => {
     }
     return ( 
         <div className="">
+            {infoClicked && size <=480 ? <Redirect to = "/info"/> : null}
              <div className="daily_cal"> 
-               
+                {currentEvent !== "" && size <=480 ? <Redirect to = "/foodSearch"/> :null}
                 <button className = "btn daily_cal_date" onClick={() => setIsOpen(true)}>{selectedDate === new Date().toDateString()? "Today":selectedDate}</button>
                 <div className="calorie_eaten_info">
-                    <h2>{props.eatenCal} of {props.reqCal} Cal Eaten</h2>
+                    {userInfo?<h2>{props.eatenCal} of {userInfo.targetCal} Cal Eaten</h2> :<h2>Loading...</h2>}
                     <div onClick = {()=>{
-                        props.infoHandler()
+                        props.infoHandler();
+                        setInfoClicked(true);
                     }}>
                         <InfoIcon className = "infoIcon">Details</InfoIcon>
                     </div>
@@ -234,6 +270,7 @@ const DailyEventCol = (props) => {
             </SlideToggle>
             <AddIcon onClick = {(e)=>{
             setEvent("Breakfast");
+            setCurrentEventChange(true)
         }} className = "addIcon"/>
             </div>
 

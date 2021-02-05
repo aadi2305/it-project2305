@@ -7,6 +7,7 @@ import "../styles/mainplatform.css"
 import axios from "../axios"
 import {useAuth} from "../contexts/AuthContext"
 import Info from "./Info";
+import { Redirect } from 'react-router-dom';
 
 const Mainplatform = () => {
 
@@ -41,7 +42,6 @@ const Mainplatform = () => {
       }
 
     const size = useWindowSize().width; 
-    console.log(size);
 
     const modeChange = ()=>{
         if(currentTheme === "dark"){
@@ -76,17 +76,13 @@ const Mainplatform = () => {
     }, [totalDailyCal]);
     return ( 
         <div className={"mainplatform dashboard-"+currentTheme}>
+            {size > 480 ? <Redirect to="/dashboard"/>:null}
             <Navbar modeChange = {modeChange} mode = {othermode}/>
             <div className={" mainplatform_row row mainplatform-"+currentTheme}>
-                 
-                <div className="daily_events_col col col-12 col-sm-12 col-md-12 col-lg-6  col-xl-6">
-                    <DailyEventCol infoHandler = {infoHandler}  reqCal = {reqCal} eatenCal = {Math.round(totalDailyCal * 100) / 100} percentageCal = {percentageCal}/>
-                </div>
-                {size > 480 ?
                 <div className="food_search col col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                     {info? <Info theme = {currentTheme} />: <FoodSearch />}
                 </div>
-                :null}
+             
             </div>
             
         </div>

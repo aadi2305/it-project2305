@@ -26,9 +26,11 @@ const TheForm = () => {
     const [weightStatus, setWeightStatus] = useState("");
     const [idealWeight, setidealWeight] = useState(0);
     const [maintainenceCal, setmaintainenceCal] = useState(0);
+    const [reqmaintainenceCal, setreqmaintainenceCal] = useState(0)
     const [error, setError] = useState("");
-    const [userInfo, setUserInfo]= useState({});
+    const [userInfo, setUserInfo]= useState();
     const [nextButton, setNextButton] = useState(false);
+    const [submitClicked, setSubmitClicked] = useState(false);
     
     const clickedButtonStyle = {
         color : "#05386b",
@@ -37,10 +39,10 @@ const TheForm = () => {
     
     useEffect(() => {
         if(currentUser){
-            axios.post("/getUserInfo", {
+            axios.post("/getUserHealthInfo", {
                 email : currentUser.email
             }).then(res=>{
-                setUserInfo(res)
+                setUserInfo(res.data)
             },err=>{
                 console.log(err);
             })
@@ -101,6 +103,7 @@ const TheForm = () => {
     },[BMR, maintainenceCal]);
 
     const submitHandler2 = ()=>{
+     
         if(weight !== 0 && height !== 0 && age !== 0){
             var theArray = $('.formboy').serialize().split("&");
             if(theArray[1].split("=")[1] === "1")harrisBenedict();
@@ -112,29 +115,46 @@ const TheForm = () => {
             else if(theArray[0].split("=")[1] === "3")setmaintainenceCal(1.55*BMR);
         }else{
             if(weight === 0)setError("Enter Your Weight");
-            else if(height === 0)setError("Enter Your Height");
+            else if(height === 0 || inches === 0)setError("Enter Your Height");
             else if(age === 0)setError("Enter Your Age");
         }
+        setSubmitClicked(true);
         
     }
-    useEffect(() => {
-        window.location.href = "/dashboard";
-    }, [nextButton]);
     const nextButtonHandler = ()=>{
-        var sex = "";
-        if(male)sex = "Male";
-        else if (!male) sex = "Female"
-        axios.post("/updateUser", {
-            email : currentUser.email,
-            sex : sex,
-            age : age,
-            weight : weight,
-            height : height,
-            targetWeight : weightTarget,
-            calReq : maintainenceCal.toFixed(1)
-        }).then((res)=>console.log(res),
-                err=>{if(err)console.log(err);})
-
+        if(weightTarget > weight && maintainenceCal !== 0){
+            var sex = "";
+            if(male)sex = "Male";
+            else if (!male) sex = "Female"
+            axios.post("/updateUser", {
+                email : currentUser.email,
+                sex : sex,
+                age : age,
+                weight : weight,
+                height : height,
+                targetWeight : weightTarget,
+                calReq : maintainenceCal.toFixed(1),
+                targetCal : (maintainenceCal*109/100).toFixed(1)
+            }).then((res)=>console.log(res),
+                    err=>{if(err)console.log(err);})
+        }else if(weightTarget <= weight && maintainenceCal !== 0){
+            var sex = "";
+            if(male)sex = "Male";
+            else if (!male) sex = "Female"
+            axios.post("/updateUser", {
+                email : currentUser.email,
+                sex : sex,
+                age : age,
+                weight : weight,
+                height : height,
+                targetWeight : weightTarget,
+                calReq : maintainenceCal.toFixed(1),
+                targetCal : (maintainenceCal*91/100).toFixed(1)
+            }).then((res)=>console.log(res),
+                    err=>{if(err)console.log(err);})
+        }
+       
+        console.log(reqmaintainenceCal);
         setNextButton(true);
 
     }
@@ -159,10 +179,9 @@ const TheForm = () => {
         else if(!male && hegihtInInches > 0)setidealWeight((49 + (1.7*hegihtInInches)).toFixed(0))
     }
     
-    console.log("formStatus: " + formStatus);
+    // console.log("formStatus: " + formStatus);
     return ( 
         <div className = {"the-form dashboard-"+currentTheme}>
-            {/* {formStatus? <Redirect to = "/dashboard" />:null} */}
             <Navbar modeChange = {modeChange} mode = {othermode}/>
             <div className={"row the-form-content the-form-"+currentTheme}>
                 <div className="col col-lg-6 col-sm-12 infoTab1">
@@ -204,14 +223,12 @@ const TheForm = () => {
                     <div className="BMI-class row">
                         <div className="col" style = {{textAlign : "center"}}>
                             <h5 id = "ur-bmi-text">Your BMI: {BMI}</h5>
-                            {/* <span className = "bmi-text">{BMI}</span> */}
                             <h4 className = "0" style = {{fontWeight : "650"}}>{weightStatus}</h4>
                         </div>
                         <div className="col" style = {{textAlign : "center"}}>
                             <h5 id = "ideal-weight">Ideal Weight Range</h5>
                             <h4 className = "weight-status-and-ideal-weight" style = {{fontWeight : "650"}}>{idealWeight-5}-{parseInt(idealWeight)+5}Kg</h4>
                         </div>
-                        
                     </div>}
                     <div class="form-group BMI-class">
                         <p for="exampleFormControlSelect1">Activity: </p>
@@ -245,15 +262,22 @@ const TheForm = () => {
             </div>
             <div style = {{display : "block" ,textAlign : "center"}}>
                 <button  onClick = {submitHandler2}className ="next-skip-button btn">Submit</button>
-                <button  className ="next-skip-button btn">Skip</button>
-                <button onClick = {nextButtonHandler} className ="next-skip-button btn">Next</button>
+                {/* <button  onClick = {skipHandler} className ="next-skip-button btn">Skip</button> */}
+                {nextButton? <Redirect to = "/dashboard"/>:null}
                 </div>
             
             {BMR === 0? null : <div style = {{textAlign : "center"}}>
                 <p style = {{marginBottom : "0"}}>You need</p>
                 <h3 style = {{fontWeight : "600"}}>{maintainenceCal.toFixed(1)} Calories/Day</h3>
                 <p style = {{marginBottom : "0"}}>To maintain your Weight</p>
-                </div>}
+                </div>
+            }
+                {submitClicked?
+                    <div style = {{display : "block" ,textAlign : "center", marginTop : "15px"}}>
+                        <button  onClick = {nextButtonHandler} className ="next-skip-button btn">Next</button>
+                    </div> :null
+                }
+                
         </div>
      );
 }
