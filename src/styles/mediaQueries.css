@@ -261,8 +261,12 @@
     .macros_inner_div h1{
         font-size: 6.5vw !important;
     }
+    .info{
+        margin-top: 20px !important;
+        align-items: flex-start !important;
+    }
     .info h2{
-        width: 140px !important;
+        width: 30vw !important;
     }
     .macros_info{
         font-size: 4vw !important;

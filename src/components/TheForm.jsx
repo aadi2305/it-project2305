@@ -115,7 +115,7 @@ const TheForm = () => {
             else if(theArray[0].split("=")[1] === "3")setmaintainenceCal(1.55*BMR);
         }else{
             if(weight === 0)setError("Enter Your Weight");
-            else if(height === 0 || inches === 0)setError("Enter Your Height");
+            else if(height === 0 ||( inches === 0 && feet === 0))setError("Enter Your Height");
             else if(age === 0)setError("Enter Your Age");
         }
         setSubmitClicked(true);
