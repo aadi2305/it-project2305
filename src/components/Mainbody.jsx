@@ -91,6 +91,7 @@ const Mainbody = () => {
     // }, [currentUser]);
     return ( 
         <div className="mainbody container-fluid">
+            {currentUser ? <Redirect to = "/dashboard" />:null}
             {currentUser && signedUp ? <Redirect to = "/form" />:null}
             {currentUser && loggedIn ? <Redirect to = "/dashboard" />:null}
             {/* {currentUser ? <Redirect to = "/form" />:null} */}
