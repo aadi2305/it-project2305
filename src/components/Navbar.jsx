@@ -10,7 +10,8 @@ const Navbar = (props) => {
 
     const {changeLoginStatus, loginStatus} = useTheme();
     const{currentUser, logout} = useAuth();
-
+    const yooo = window.location.href.split("/")[window.location.href.split("/").length-1];
+    console.log(yooo);
     var bool = false
     if(window.innerWidth < 1000)bool = true;
     const [showToggleBtn, setshowToggleBtn] = useState(bool);
@@ -27,9 +28,8 @@ const Navbar = (props) => {
                 <div onClick = {()=>{
                     window.location.href = "/dashboard"
                 }} className = "navbar_back_arrow">
-                {window.location.href === "https://calorix.herokuapp.com/foodsearch" || window.location.href === "https://calorix.herokuapp.com/info"?<ArrowBackIcon />:null}
+                {yooo === "foodSearch" || yooo === "info"?<ArrowBackIcon />:null}
                 </div>
-                {console.log(window.location.href)}
                 <h1 onClick ={()=>window.location.href ="/"} style = {{cursor : "pointer"}} class="titleName" href="#">Calorix</h1>
                 {showToggleBtn ? null:
                 <div className = "navbar-list">
