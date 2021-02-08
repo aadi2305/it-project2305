@@ -113,8 +113,8 @@
 }
 
 .mainbody{
-    /* padding-top: 100px;
-    padding-bottom: 100px; */
+    padding-top: 100px;
+    padding-bottom: 100px;
     height: fit-content;
     background-color:  transparent !important;
 }

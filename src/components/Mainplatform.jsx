@@ -12,15 +12,19 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 
 const Mainplatform = () => {
 
-    const {currentEvent, currentUser,contentAdd,setEvent,currentEvent2,foodAddedHandler,foodAdded,totalDailyCal,changeTotalDailyCal, currentDate} = useAuth();
+    const {currentEvent, currentUser,breakfastCal,morningSCal,lunchCal,eveSCal,dinnerCal,contentAdd,setEvent,currentEvent2,foodAddedHandler,foodAdded,totalDailyCal,changeTotalDailyCal, currentDate} = useAuth();
     const [othermode, setotherMode] = useState("Dark");
     const [reqCal, setReqCal] = useState(2210);
     const [info, setInfo] = useState(false);
     const [percentageCal, setpercentageCal] = useState(0);
     const {currentTheme, updateTheme} = useTheme();
     const [userInfo, setUserInfo] = useState();
+    const [tatalCaloriess, setTatalCaloriess] = useState(0);
 
-     
+    useEffect(() => {
+        var totalCalories2 = breakfastCal+morningSCal+lunchCal+eveSCal+dinnerCal;
+        setTatalCaloriess(totalCalories2);
+    }, [breakfastCal,morningSCal,lunchCal,eveSCal,dinnerCal]);
    
     function useWindowSize() {
         const [windowSize, setWindowSize] = useState({
@@ -73,9 +77,9 @@ const Mainplatform = () => {
         setInfo(!info);
    }
     useEffect(() => {
-        if((totalDailyCal/reqCal)*100 > 95)setpercentageCal(96.5);
-        else setpercentageCal((totalDailyCal/reqCal)*100);
-    }, [totalDailyCal]);
+        if((tatalCaloriess/reqCal)*100 > 95)setpercentageCal(96.5);
+        else setpercentageCal((tatalCaloriess/reqCal)*100);
+    }, [tatalCaloriess]);
     return ( 
         <div className={"mainplatform dashboard-"+currentTheme}>
             <Navbar modeChange = {modeChange} mode = {othermode}/>
