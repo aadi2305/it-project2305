@@ -48,7 +48,6 @@ const Info = (props) => {
             setProtein(proteins);
             setFats(fatss);
             setCarbs(carbss);
-            console.log(proteins, fatss, carbss);
         },err=>{
             console.log(err);
         })
@@ -59,7 +58,6 @@ const Info = (props) => {
         <div className={"info info-"+props.theme}>
             {loading?<h2 className = "macros_name">Loading...</h2>:
             <div className = "info">
-                {console.log(props.theme)}
                 <div className = "protein">
                     <h2 className = "macros_info">{Math.round(protein*100/100)} gms</h2>
                     <h2 className = "macros_name">Protein</h2>

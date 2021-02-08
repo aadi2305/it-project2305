@@ -3,6 +3,7 @@ import ArrowDropDownCircleOutlinedIcon from '@material-ui/icons/ArrowDropDownCir
 import {useTheme} from "../contexts/ThemeContext";
 import {useAuth} from "../contexts/AuthContext";
 import { Link} from "react-router-dom"
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 
 const Navbar = (props) => {
@@ -23,6 +24,12 @@ const Navbar = (props) => {
 
     return ( 
             <nav class="navbar">
+                <div onClick = {()=>{
+                    window.location.href = "/dashboard"
+                }} className = "navbar_back_arrow">
+                {window.location.href === "https://calorix.herokuapp.com/foodsearch" || window.location.href === "https://calorix.herokuapp.com/info"?<ArrowBackIcon />:null}
+                </div>
+                {console.log(window.location.href)}
                 <h1 onClick ={()=>window.location.href ="/"} style = {{cursor : "pointer"}} class="titleName" href="#">Calorix</h1>
                 {showToggleBtn ? null:
                 <div className = "navbar-list">
