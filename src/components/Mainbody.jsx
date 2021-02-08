@@ -20,7 +20,7 @@ const Mainbody = () => {
     const [loggedIn, setLoggedIn] = useState(false);
 
     const {signup, login, currentUser, changeFormStatus, formStatus} = useAuth();
-    const{loginStatus} = useTheme()
+    const{loginStatus,changeLoginStatus} = useTheme()
     
     const showPassword = (e)=>{
         if(document.getElementById("password").type === "text")document.getElementById("password").type = "password";
@@ -119,6 +119,9 @@ const Mainbody = () => {
                             </div>
                             <input type="password" ref= {confirmPassoword}placeholder = "Confirm Password"/>
                             <button className="btn">Sign Up</button>
+                            <p>Already a member? <span onClick = {()=>{
+                                changeLoginStatus();
+                            }}>Login</span></p>
                         </form>
                     :
                         <form onSubmit = {submitLogInHandler}className = "signUpForm">
@@ -138,6 +141,9 @@ const Mainbody = () => {
                                 
                             </div>
                             <button className="btn">Log In</button>
+                            <p>Not a member? <span onClick = {()=>{
+                                changeLoginStatus();
+                            }}>Sign Up</span></p>
                             <input type="text" style = {{visibility : "hidden"}}/>
                         </form>
                     }
