@@ -1,0 +1,34 @@
+.landing_page_info{
+    background-color: #edf5e1 !important;
+    padding: 50px 6%;
+
+}
+.asdflklj{
+    color: #05386b;
+    font-size: 17px;
+    font-weight: 600;
+    text-align: center;
+    width: 700px;
+    display: block;
+    margin: 0px auto 50px auto !important;
+}
+.landing_page_info .row{
+    display: flex;
+    justify-content: center;
+    color: #05386b;
+}
+.landing_page_info .ayeeee{
+    border-right: 2px solid #05386b;
+}
+.step_instructions{
+    margin-top: 20px;
+    font-size: 17px;
+    font-weight: 600;
+    text-align: left !important;
+}
+.step_header{
+    border-bottom: 1px solid #05386b;
+    text-align: center;
+    font-size: 25px !important;
+    font-weight: 600;
+}

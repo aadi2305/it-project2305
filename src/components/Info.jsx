@@ -57,7 +57,7 @@ const Info = (props) => {
 
     return ( 
         <div className={"info info-"+props.theme}>
-            {loading?<h2>Loading...</h2>:
+            {loading?<h2 className = "macros_name">Loading...</h2>:
             <div className = "info">
                 {console.log(props.theme)}
                 <div className = "protein">

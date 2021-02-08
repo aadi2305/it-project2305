@@ -7,6 +7,8 @@ import "../styles/mainplatform.css"
 import axios from "../axios"
 import {useAuth} from "../contexts/AuthContext"
 import Info from "./Info";
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 const Mainplatform = () => {
 
@@ -88,7 +90,14 @@ const Mainplatform = () => {
                 </div>
                 :null}
             </div>
-            
+            <div className="footar">
+                <p className = "footer_created_by" >Created By Vivekanand Mogali</p>
+                <div className="social_media_icons">
+                    <a href="https://www.linkedin.com/in/vivekanand-mogali-389226191/"><div className="social_media_icon"><LinkedInIcon style={{ fontSize: 40 }} /></div></a>
+                    <a href="https://github.com/aadi2305"><div className="social_media_icon"><GitHubIcon style={{ fontSize: 40, marginLeft : "20px" }} /></div></a>
+                </div>
+
+            </div>
         </div>
      );
 }

@@ -27,8 +27,14 @@ const FoodSearch = (props) => {
     const [success, setSuccess] = useState("");
     const [unitNumber, setUnitNumber] = useState(1);
     const [loading, setLoading] = useState(false);
+    const [loading2, setLoading2] = useState(false);
+    const [headerIterator, setHeaderIterator] = useState(0);
+    const [header, setHeader] = useState({
+        "x-app-id": "d98335d7",
+        "x-app-key": "77117116fe8c06aa921644dfc7026397"
+    });
     
-   
+    const headerArray = [{"x-app-id": "d98335d7","x-app-key": "77117116fe8c06aa921644dfc7026397"},{"x-app-id": "9aa033cb","x-app-key": "c5abaa4382558e3d2a6c30a31f2b5fe7"}]
     const gramsArray = [1,2,3,4,5,10,20,30,40,50,100,150,200,250,300,350,400,450,500,600,700,800,900,1000];
     const unitsArray = ["grams", "cups", "bowls", "milliliters", ""];
     
@@ -48,8 +54,7 @@ const FoodSearch = (props) => {
     }, [grams]);
 
     useEffect(() => {
-        // console.log("Unit value changed");
-        // console.log(unitNumber);
+        setLoading2(true);
         var data = {
             "query" : unitNumber +"  "+ searchValue + " " + unitsArray[$('.units').serialize().split("=")[1]]
         }
@@ -58,14 +63,9 @@ const FoodSearch = (props) => {
         method:'post',                                                                                                                                                                                                                                          
         url:"https://trackapi.nutritionix.com/v2/natural/nutrients",                                                                                                                                                                                           
         data:data,                                                                                                                                                                                                                                             
-        headers:{                                                                                                                                                                                                                                              
-            // "x-app-id": "d98335d7",
-            // "x-app-key": "77117116fe8c06aa921644dfc7026397"    
-            
-            "x-app-id": "9aa033cb",
-            "x-app-key": "c5abaa4382558e3d2a6c30a31f2b5fe7"   
-            }                                                                                                                                                                                                                                                      
+        headers:header                                                                                                                                                                                                                                                      
         }).then((res)=>{
+            setLoading2(false);
             setFood(res.data.foods[0])
             setCurrentCals(res.data.foods[0].nf_calories);
             setCals(res.data.foods[0].nf_calories);
@@ -76,6 +76,13 @@ const FoodSearch = (props) => {
             setCurrentProtein(res.data.foods[0].nf_protein);
             setProtein(res.data.foods[0].nf_protein);
         },(err)=>{
+            if(headerIterator === 0){
+                setHeaderIterator(1);
+                setHeader(headerArray[1]);
+            }else if(headerIterator === 1){
+                setHeaderIterator(0);
+                setHeader(headerArray[2]);
+            }
             console.log(err);
         })
     }, [unitValue]);
@@ -91,6 +98,7 @@ const FoodSearch = (props) => {
             seterror("Please Click on any + Icon");
         }else{
         setgrams(0);
+        
         e.preventDefault();
         setLoading(true);
         // console.log(unitsArray[$('.units').serialize().split("=")[1]]);
@@ -102,15 +110,10 @@ const FoodSearch = (props) => {
         method:'post',                                                                                                                                                                                                                                          
         url:"https://trackapi.nutritionix.com/v2/natural/nutrients",                                                                                                                                                                                           
         data:data,                                                                                                                                                                                                                                             
-        headers:{                                                                                                                                                                                                                                              
-            // "x-app-id": "d98335d7",
-            // "x-app-key": "77117116fe8c06aa921644dfc7026397"    
-            
-            "x-app-id": "9aa033cb",
-            "x-app-key": "c5abaa4382558e3d2a6c30a31f2b5fe7"   
-            }                                                                                                                                                                                                                                                      
+        headers:header                                                                                                                                                                                                                                                    
         }).then((res)=>{
             setLoading(false);
+            setLoading2(false);
             setFood(res.data.foods[0])
             setCurrentCals(res.data.foods[0].nf_calories);
             setCals(res.data.foods[0].nf_calories);
@@ -121,7 +124,15 @@ const FoodSearch = (props) => {
             setCurrentProtein(res.data.foods[0].nf_protein);
             setProtein(res.data.foods[0].nf_protein);
         },(err)=>{
-            seterror(capitaliseFirstLetter(searchValue) + " Is Not Available")
+            // seterror(capitaliseFirstLetter(searchValue) + " Is Not Available")
+            seterror("Try Again")
+            if(headerIterator === 0){
+                setHeaderIterator(1);
+                setHeader(headerArray[1]);
+            }else if(headerIterator === 1){
+                setHeaderIterator(0);
+                setHeader(headerArray[2]);
+            }
             setLoading(false);
             console.log(err);
         })}
@@ -214,7 +225,7 @@ const FoodSearch = (props) => {
                             <h1 className="hone">{capitaliseFirstLetter(searchValue)}</h1>
                         </div>
                         <div className="col food_cals">
-                            <h4>{CurrentCals} Cals</h4>
+                            {loading2 ?<h4>Loading...</h4>:<h4>{Math.round(CurrentCals)} Cals</h4>}
                             <p>{$('.units').serialize().split("=")[1] != 4 ?unitNumber + " " + unitsArray[$('.units').serialize().split("=")[1]] : unitNumber + " " + capitaliseFirstLetter(searchValue) }</p>
                         </div>
                     </div>
@@ -234,15 +245,15 @@ const FoodSearch = (props) => {
                     </div> 
                     <div className="row macros">
                         <div className="col text-align-center macros_inner_div">
-                            <p>{Currentprotein} gm</p>
+                            {loading2 ? <p>Loading...</p> : <p>{Currentprotein} gm</p>}
                             <h1 className="hone">Protein</h1>
                         </div>
                         <div className="col text-align-center macros_inner_div">
-                            <p>{Currentcarbs} gm</p>
+                            {loading2 ? <p>Loading...</p> : <p>{Currentcarbs} gm</p>}
                             <h1 className="hone">Carbs</h1>
                         </div>
                         <div className="col text-align-center macros_inner_div">
-                            <p>{Currentfats} gm</p>
+                            {loading2 ? <p>Loading...</p> : <p>{Currentfats} gm</p>}
                             <h1 className="hone">Fats</h1> 
                         </div>
                     </div>

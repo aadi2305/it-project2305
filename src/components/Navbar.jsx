@@ -31,7 +31,8 @@ const Navbar = (props) => {
                     <p style = {{cursor : "pointer"}} onClick = {()=>window.location.href ="/form"}>Profile</p>
                    <button onClick = {()=>{
                         props.modeChange();
-                    }} className = "btn">{props.mode} Mode</button>
+                    }} className = "btn">{props.mode} Mode
+                    </button>
                     <button onClick = {(e)=>{
                             e.preventDefault();
                             if(currentUser){

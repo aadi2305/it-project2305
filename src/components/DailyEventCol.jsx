@@ -212,7 +212,9 @@ const DailyEventCol = (props) => {
             {infoClicked && size <=480 ? <Redirect to = "/info"/> : null}
              <div className="daily_cal"> 
                 {currentEvent !== "" && size <=480 ? <Redirect to = "/foodSearch"/> :null}
+                <div className = "data_div">
                 <button className = "btn daily_cal_date" onClick={() => setIsOpen(true)}>{selectedDate === new Date().toDateString()? "Today":selectedDate}</button>
+                </div>
                 <div className="calorie_eaten_info">
                     {userInfo?<h2>{props.eatenCal} of {userInfo.targetCal} Cal Eaten</h2> :<h2>Loading...</h2>}
                     <div onClick = {()=>{
@@ -227,7 +229,6 @@ const DailyEventCol = (props) => {
                     <div className="range"></div>
                 </div>
                 <div style = {{position : "relative"}}>
-                    {/* <h2 style = {{position : "absolute", marginTop : "20px"}}></h2> */}
                     <div style = {{opacity : "0", position : "absolute"}}>
                         
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
