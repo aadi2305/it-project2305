@@ -32,6 +32,8 @@ const DailyEventCol = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [currentEventChange, setCurrentEventChange] = useState(false);
     const [infoClicked, setInfoClicked] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [tatalCaloriess, setTatalCaloriess] = useState(0);
     
     function useWindowSize() {
         const [windowSize, setWindowSize] = useState({
@@ -66,7 +68,6 @@ const DailyEventCol = (props) => {
         history.push(path);
     }
     useEffect(() => {
-        
         axios.post("/getUserHealthInfo", {
             email : currentUser.email,
             date : selectedDate
@@ -76,6 +77,7 @@ const DailyEventCol = (props) => {
             console.log(err);
         })
     }, []);
+    console.log(loading);
     useEffect(() => {
     axios.post("/getUserInfo", {
         email : currentUser.email,
@@ -104,39 +106,53 @@ const DailyEventCol = (props) => {
     }, [currentEvent2,selectedDate]);
 
     useEffect(() => {
+        var totalCalories2 = breakfastCal+morningSCal+lunchCal+eveSCal+dinnerCal;
+        setTatalCaloriess(totalCalories2);
+    }, [breakfastCal,morningSCal,lunchCal,eveSCal,dinnerCal]);
+
+    useEffect(() => {
+        setLoading(true)
         axios.post("/getUserInfo", {
             email : currentUser.email,
             date : selectedDate
         }).then(res=>{
+            setLoading(false)
             var totalCalories = 0;
+            var totalCalories2 = 0;
             res.data.breakfast.forEach(element => {
                 totalCalories += element.calories
+                totalCalories2 += element.calories
             });
             changeEventCal(totalCalories, "Breakfast", "dateChanged");
             totalCalories = 0;
 
             res.data.morningSnack.forEach(element => {
-                totalCalories += element.calories
+                totalCalories += element.calories;
+                totalCalories2 += element.calories
             });
             changeEventCal(totalCalories, "Morning Snack", "dateChanged");
             totalCalories = 0;
 
             res.data.lunch.forEach(element => {
-                totalCalories += element.calories
+                totalCalories += element.calories;
+                totalCalories2 += element.calories
             });
             changeEventCal(totalCalories, "Lunch", "dateChanged");
             totalCalories = 0;
 
             res.data.eveningSnack.forEach(element => {
-                totalCalories += element.calories
+                totalCalories += element.calories;
+                totalCalories2 += element.calories
             });
             changeEventCal(totalCalories, "Evening Snack", "dateChanged");
             totalCalories = 0;
 
             res.data.dinner.forEach(element => {
-                totalCalories += element.calories
+                totalCalories += element.calories;
+                totalCalories2 += element.calories
             });
             changeEventCal(totalCalories, "Dinner", "dateChanged");
+            setTatalCaloriess(totalCalories2);
 
         },err=>{
             console.log(err);
@@ -216,7 +232,7 @@ const DailyEventCol = (props) => {
                 <button className = "btn daily_cal_date" onClick={() => setIsOpen(true)}>{selectedDate === new Date().toDateString()? "Today":selectedDate}</button>
                 </div>
                 <div className="calorie_eaten_info">
-                    {userInfo?<h2>{props.eatenCal} of {userInfo.targetCal} Cal Eaten</h2> :<h2>Loading...</h2>}
+                    {!loading && userInfo?<h2>{Math.round(tatalCaloriess*100)/100} of {userInfo.targetCal} Cal Eaten</h2> :<h2>Loading...</h2>}
                     <div onClick = {()=>{
                         props.infoHandler();
                         setInfoClicked(true);
@@ -261,7 +277,7 @@ const DailyEventCol = (props) => {
             {({ toggle, setCollapsibleElement }) => (
                 <div style = {{flex : "1"}}   className="my-collapsible">
                 <div className="my-collapsible__toggle" onClick={toggle}>
-                <DailyEventComponent event = "Breakfast" calEaten= {Math.ceil(breakfastCal) + " of 609 Cal"}/>
+                <DailyEventComponent event = "Breakfast" calEaten= {userInfo?Math.ceil(breakfastCal) + " of " + Math.round(userInfo.targetCal*0.22) + "Cal": "Loading..."}/>
                 </div>
                 <div className="my-collapsible__content" ref={setCollapsibleElement}>
                     <div className="my-collapsible__content-inner"><DailyEventInfo deleteFood = {deleteFood} info = {breakfastinfo} className = "breakfast"/></div>
@@ -281,7 +297,7 @@ const DailyEventCol = (props) => {
             {({ toggle, setCollapsibleElement }) => (
                 <div style = {{flex : "1"}}  className="my-collapsible">
                 <div  className="my-collapsible__toggle" onClick={toggle}>
-                <DailyEventComponent event = "Morning Snack" calEaten= {Math.ceil(morningSCal) +" of 2609 Cal"}/>
+                <DailyEventComponent event = "Morning Snack" calEaten= {userInfo?Math.ceil(morningSCal) +" of " + Math.round(userInfo.targetCal*0.10) + "Cal":"Loading..."}/>
                 </div>
                 <div className="my-collapsible__content" ref={setCollapsibleElement}>
                     <div className="my-collapsible__content-inner"><DailyEventInfo deleteFood = {deleteFood} info = {morningSinfo} className = "breakfast"/></div>
@@ -299,7 +315,7 @@ const DailyEventCol = (props) => {
             {({ toggle, setCollapsibleElement }) => (
                 <div style = {{flex : "1"}}   className="my-collapsible">
                 <div className="my-collapsible__toggle" onClick={toggle}>
-                <DailyEventComponent event = "Lunch"calEaten= {Math.ceil(lunchCal) +" of 609 Cal"}/>
+                <DailyEventComponent event = "Lunch"calEaten= {userInfo?Math.ceil(lunchCal) +" of " + Math.round(userInfo.targetCal*0.30) + "Cal":"Loading..."}/>
                 </div>
                 <div className="my-collapsible__content" ref={setCollapsibleElement}>
                     <div className="my-collapsible__content-inner"><DailyEventInfo deleteFood = {deleteFood} info = {lunchinfo} className = "breakfast"/></div>
@@ -318,7 +334,7 @@ const DailyEventCol = (props) => {
             {({ toggle, setCollapsibleElement }) => (
                 <div style = {{flex : "1"}}   className="my-collapsible">
                 <div className="my-collapsible__toggle" onClick={toggle}>
-                <DailyEventComponent event = "Evening Snack"calEaten= {Math.ceil(eveSCal) + " of 609 Cal"}/>
+                <DailyEventComponent event = "Evening Snack"calEaten= {userInfo?Math.ceil(eveSCal) + " of " + Math.round(userInfo.targetCal*0.10 )+ "Cal":"Loading..."}/>
                 </div>
                 <div className="my-collapsible__content" ref={setCollapsibleElement}>
                     <div className="my-collapsible__content-inner"><DailyEventInfo deleteFood = {deleteFood} info = {eveSinfo} className = "breakfast"/></div>
@@ -337,7 +353,7 @@ const DailyEventCol = (props) => {
             {({ toggle, setCollapsibleElement }) => (
                 <div style = {{flex : "1"}}  className="my-collapsible">
                 <div className="my-collapsible__toggle" onClick={toggle}>
-                <DailyEventComponent  event = "Dinner"calEaten= {dinnerCal + " of 609 Cal"}/>
+                <DailyEventComponent  event = "Dinner"calEaten= {userInfo?Math.ceil(dinnerCal) + " of " + Math.round(userInfo.targetCal*0.28) + "Cal":"Loading..."}/>
                 </div>
                 <div className="my-collapsible__content" ref={setCollapsibleElement}>
                     <div className="my-collapsible__content-inner"><DailyEventInfo deleteFood = {deleteFood} info = {dinnerinfo} className = "breakfast"/></div>

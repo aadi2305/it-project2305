@@ -13,7 +13,7 @@
     padding-right: 6%;
 }
 .mainbody_clss{
-    height: 80vh;
+    height: 79vh;
     display: flex;
     align-items: center;
 }
@@ -113,8 +113,8 @@
 }
 
 .mainbody{
-    padding-top: 100px;
-    padding-bottom: 100px;
+    /* padding-top: 100px;
+    padding-bottom: 100px; */
     height: fit-content;
     background-color:  transparent !important;
 }
@@ -183,7 +183,7 @@
     text-align: center;
 }
 .footar{
-    margin-top: 50px;
+    /* margin-top: 50px; */
 }
 .footer_created_by{
     text-align: center;
@@ -192,23 +192,37 @@
 .social_media_icons{
     display: flex;
     justify-content: center;
+    padding-bottom: 20px;
 }
 .social_media_icon{
     cursor: pointer;
     padding-top: 10px;
-    padding-bottom: 10px;
+    
 }
 .dashboard-light a{
     color: #05386b;
 }
 .dashboard-light a:hover{
-    color: #05386b;
+    color: #edf5e1;
     
 }
 .dashboard-dark a{
     color: #5cdb95;
 }
 .dashboard-dark a:hover{
-    color: #5cdb95;
+    color: #edf5e1;
     
+}
+@font-face {
+    font-family: myFirstFont;
+    src: url(./ChunkFive-Regular.otf);
+}
+.fiverrr{
+    font-size: 30px;
+    margin-left : 20px;
+    font-family: myFirstFont, sans-serif !important;
+    margin-bottom: 0 !important;
+}
+span:hover{
+    color: #edf5e1;
 }

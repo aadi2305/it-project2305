@@ -119,7 +119,7 @@ const Mainbody = () => {
                             </div>
                             <input type="password" ref= {confirmPassoword}placeholder = "Confirm Password"/>
                             <button className="btn">Sign Up</button>
-                            <p>Already a member? <span onClick = {()=>{
+                            <p>Already a member? <span style = {{cursor : "pointer"}} onClick = {()=>{
                                 changeLoginStatus();
                             }}>Login</span></p>
                         </form>
@@ -141,7 +141,7 @@ const Mainbody = () => {
                                 
                             </div>
                             <button className="btn">Log In</button>
-                            <p>Not a member? <span onClick = {()=>{
+                            <p>Not a member? <span style = {{cursor : "pointer"}} onClick = {()=>{
                                 changeLoginStatus();
                             }}>Sign Up</span></p>
                             <input type="text" style = {{visibility : "hidden"}}/>

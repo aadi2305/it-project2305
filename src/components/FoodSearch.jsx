@@ -87,7 +87,6 @@ const FoodSearch = (props) => {
         })
     }, [unitValue]);
 
-    // console.log($('.units').serialize().split("=")[1]);
     
     const submitHandler = (e)=>{
         setSuccess("");
@@ -101,7 +100,6 @@ const FoodSearch = (props) => {
         
         e.preventDefault();
         setLoading(true);
-        // console.log(unitsArray[$('.units').serialize().split("=")[1]]);
         var data = {
             "query" : unitNumber +"  "+ searchValue + " grams" 
         }

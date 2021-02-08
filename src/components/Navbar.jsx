@@ -24,12 +24,15 @@ const Navbar = (props) => {
     });
 
     return ( 
-            <nav class="navbar">
+            <nav className="navbar">
+                {(yooo === "foodSearch" || yooo === "info") && 
                 <div onClick = {()=>{
                     window.location.href = "/dashboard"
                 }} className = "navbar_back_arrow">
-                {yooo === "foodSearch" || yooo === "info"?<ArrowBackIcon />:null}
+                <ArrowBackIcon />
                 </div>
+                }
+                
                 <h1 onClick ={()=>window.location.href ="/"} style = {{cursor : "pointer"}} class="titleName" href="#">Calorix</h1>
                 {showToggleBtn ? null:
                 <div className = "navbar-list">
