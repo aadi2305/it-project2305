@@ -32,11 +32,12 @@ const Dashboard = () => {
     const modeChange = ()=>{
         if(currentTheme === "dark"){
             setotherMode("Dark");
+            updateTheme("light");
         }
         else if(currentTheme === "light"){
             setotherMode("Light");
+            updateTheme( "dark");
         }
-        updateTheme();
     }
     //console.log(CurrentTheme);
     return ( 
