@@ -14,6 +14,7 @@ const Navbar = (props) => {
     const [dashboardClick, setDashboardClick] = useState(false);
     const [profileClick, setprofileClick] = useState(false);
     const yooo = window.location.href.split("/")[window.location.href.split("/").length-1];
+    if(yooo === "")console.log("hurray");
     const [backArrowClicked, setBackArrowClicked] = useState(false);
     var bool = false
     if(window.innerWidth < 1000)bool = true;
@@ -42,8 +43,8 @@ const Navbar = (props) => {
                 {showToggleBtn ? null:
                 <div className = "navbar-list">
                     <p style = {{cursor : "pointer"}} onClick ={()=>window.location.href ="/"} >Home</p>
-                    <p style = {{cursor : "pointer"}} onClick = {()=>setDashboardClick(true)}>Dashboard</p>
-                    <p style = {{cursor : "pointer"}} onClick = {()=>setprofileClick(true)}>Profile</p>
+                    {yooo !== ""?<p style = {{cursor : "pointer"}} onClick = {()=>setDashboardClick(true)}>Dashboard</p>:<p style = {{cursor : "pointer"}}onClick = {()=>alert("Please Login First")}>Dashboard</p>}
+                    {yooo !== ""?<p style = {{cursor : "pointer"}} onClick = {()=>setprofileClick(true)}>Profile</p>:<p style = {{cursor : "pointer"}} onClick = {()=>alert("Please Login First")}>Profile</p>}
                    <button onClick = {()=>{
                         props.modeChange();
                     }} className = "btn">{props.mode} Mode
@@ -73,8 +74,8 @@ const Navbar = (props) => {
                     </ArrowDropDownCircleOutlinedIcon>
                     <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                         <li><a className="dropdown-item" href="/">Home</a></li>
-                        <li><a className="dropdown-item" onClick = {()=>setDashboardClick(true)}>Dashboard</a></li>
-                        <li><a className="dropdown-item" onClick = {()=>setprofileClick(true)}>Profile</a></li>
+                        {yooo !== ""?<li><a className="dropdown-item" onClick = {()=>setDashboardClick(true)}>Dashboard</a></li>:<li><a className="dropdown-item" onClick = {()=>alert("Please Login First")}>Dashboard</a></li>}
+                        {yooo !== ""?<li><a className="dropdown-item" onClick = {()=>setprofileClick(true)}>Profile</a></li>:<li><a className="dropdown-item" onClick = {()=>alert("Please Login First")}>Profile</a></li>}
                         <button onClick = {()=>{
                         props.modeChange();
                         }} className = "dropdown-item">{props.mode} Mode</button>
