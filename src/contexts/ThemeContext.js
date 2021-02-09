@@ -8,13 +8,8 @@ export const ThemeProvider = ({children})=>{
     const [loginStatus, setloginStatus] = useState(false);
 
 
-    const updateTheme = ()=>{
-        if(currentTheme === "dark"){
-            setCurrentTheme("light");
-        }
-        else if(currentTheme === "light"){
-            setCurrentTheme("dark");
-        }
+    const updateTheme = (newTheme)=>{
+        setCurrentTheme(newTheme)
     }
 
     const changeLoginStatus = ()=>{

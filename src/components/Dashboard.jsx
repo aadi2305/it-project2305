@@ -6,12 +6,14 @@ import {useTheme} from "../contexts/ThemeContext";
 import axios from "../axios"
 import { Redirect } from 'react-router-dom';
 import LandingPageInfo from "./LandingPageInfo";
+import {useAuth} from "../contexts/AuthContext";
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@material-ui/icons/GitHub';
 const Dashboard = () => {
 
     const [othermode, setotherMode] = useState("Dark");
     const [userInfo, setUserInfo] = useState();
+    const {currentUser,currentDate, currentEvent, currentEvent2, setEvent, addContent,foodAddedHandler,foodAdded,addToDailyCal, changeEventCal} = useAuth();
     const {currentTheme, updateTheme} = useTheme();
 
     // useEffect(() => {
@@ -25,6 +27,7 @@ const Dashboard = () => {
     //         })
     //     }
     // }, []);
+    
 
     const modeChange = ()=>{
         if(currentTheme === "dark"){

@@ -84,14 +84,39 @@ const TheForm = () => {
         else if(e.target.id == "target-weight")setweightTarget(e.target.value);
         // console.log(e.target.id);
     }
+    useEffect(() => {
+        axios.post("/getUserHealthInfo", {
+            email : currentUser.email,
+            theme : currentTheme
+        }).then(res=>{
+            updateTheme(res.data.mode);
+        },err=>{
+            console.log(err);
+        })
+    }, []);
     const modeChange = ()=>{
         if(currentTheme === "dark"){
             setotherMode("Dark");
+            updateTheme("light");
+            axios.post("/changeTheme", {
+                email : currentUser.email,
+                theme : "light"
+            }).then(res=>{
+            },err=>{
+                console.log(err);
+            })
         }
         else if(currentTheme === "light"){
             setotherMode("Light");
+            updateTheme("dark");
+            axios.post("/changeTheme", {
+                email : currentUser.email,
+                theme : "dark"
+            }).then(res=>{
+            },err=>{
+                console.log(err);
+            })
         }
-        updateTheme();
     }
     useEffect(() => {
         var theArray = $('.formboy').serialize().split("&");

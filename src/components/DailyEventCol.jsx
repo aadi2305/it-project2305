@@ -77,7 +77,6 @@ const DailyEventCol = (props) => {
             console.log(err);
         })
     }, []);
-    console.log(loading);
     useEffect(() => {
     axios.post("/getUserInfo", {
         email : currentUser.email,

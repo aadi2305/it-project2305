@@ -2,16 +2,17 @@ import React, { useState, useEffect } from 'react';
 import ArrowDropDownCircleOutlinedIcon from '@material-ui/icons/ArrowDropDownCircleOutlined';
 import {useTheme} from "../contexts/ThemeContext";
 import {useAuth} from "../contexts/AuthContext";
-import { Link} from "react-router-dom"
+import { Link, Redirect} from "react-router-dom"
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 
 const Navbar = (props) => {
+    const {currentEvent, currentUser,contentAdd,setEvent,currentEvent2,changeEventCal,breakfastCal,morningSCal,lunchCal,eveSCal,dinnerCal, changeDate} = useAuth();
 
     const {changeLoginStatus, loginStatus} = useTheme();
-    const{currentUser, logout} = useAuth();
+    const{ logout} = useAuth();
     const yooo = window.location.href.split("/")[window.location.href.split("/").length-1];
-    console.log(yooo);
+    const [backArrowClicked, setBackArrowClicked] = useState(false);
     var bool = false
     if(window.innerWidth < 1000)bool = true;
     const [showToggleBtn, setshowToggleBtn] = useState(bool);
@@ -27,12 +28,12 @@ const Navbar = (props) => {
             <nav className="navbar">
                 {(yooo === "foodSearch" || yooo === "info") && 
                 <div onClick = {()=>{
-                    window.location.href = "/dashboard"
+                    setBackArrowClicked(true);
                 }} className = "navbar_back_arrow">
                 <ArrowBackIcon />
                 </div>
                 }
-                
+                {backArrowClicked? <div>{setEvent("")}<Redirect to = "/dashboard"/></div>: null}
                 <h1 onClick ={()=>window.location.href ="/"} style = {{cursor : "pointer"}} class="titleName" href="#">Calorix</h1>
                 {showToggleBtn ? null:
                 <div className = "navbar-list">

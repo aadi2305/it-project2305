@@ -58,6 +58,7 @@ const FoodSearch = (props) => {
         var data = {
             "query" : unitNumber +"  "+ searchValue + " " + unitsArray[$('.units').serialize().split("=")[1]]
         }
+        if(searchValue){
         axios1(                                                                                                                                                                                                                                                   
         {                                                                                                                                                                                                                                                        
         method:'post',                                                                                                                                                                                                                                          
@@ -85,6 +86,7 @@ const FoodSearch = (props) => {
             }
             console.log(err);
         })
+        }
     }, [unitValue]);
 
     
