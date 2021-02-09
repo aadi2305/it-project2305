@@ -30,7 +30,7 @@ const DailyEventInfo = (props) => {
         <div className="daily-event-info">
             {props.info ? (props.info.length === 0 ?
              <div className="daily-event-info-inner"> 
-                <p>Please Add Food</p>
+                <p>Please Add Food by Clicking on + Icon</p>
             </div> : 
             props.info.map((food)=>{
                 return(
