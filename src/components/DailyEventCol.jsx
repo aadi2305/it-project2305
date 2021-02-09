@@ -224,9 +224,9 @@ const DailyEventCol = (props) => {
     }
     return ( 
         <div className="">
-            {infoClicked && size <=900 ? <Redirect to = "/info"/> : null}
+            {infoClicked && size <=1192 ? <Redirect to = "/info"/> : null}
              <div className="daily_cal"> 
-                {currentEvent !== "" && size <=900 ? <Redirect to = "/foodSearch"/> :null}
+                {currentEvent !== "" && size <=1192 ? <Redirect to = "/foodSearch"/> :null}
                 <div className = "data_div">
                 <button className = "btn daily_cal_date" onClick={() => setIsOpen(true)}>{selectedDate === new Date().toDateString()? "Today":selectedDate}</button>
                 </div>

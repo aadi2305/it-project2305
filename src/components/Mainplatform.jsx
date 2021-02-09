@@ -112,7 +112,7 @@ const Mainplatform = () => {
                 <div className="daily_events_col col col-12 col-sm-12 col-md-12 col-lg-6  col-xl-6">
                     <DailyEventCol infoHandler = {infoHandler}  reqCal = {reqCal} eatenCal = {Math.round(totalDailyCal * 100) / 100} percentageCal = {percentageCal}/>
                 </div>
-                {size > 900 ?
+                {size > 1192 ?
                 <div className="food_search col col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                     {info? <Info theme = {currentTheme} />: <FoodSearch />}
                 </div>

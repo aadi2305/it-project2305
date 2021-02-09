@@ -104,7 +104,7 @@ const Mainplatform = () => {
     }, [totalDailyCal]);
     return ( 
         <div className={"mainplatform dashboard-"+currentTheme}>
-            {size > 900 ? <Redirect to="/dashboard"/>:null}
+            {size > 1192 ? <Redirect to="/dashboard"/>:null}
             <Navbar modeChange = {modeChange} mode = {othermode}/>
             <div className={" mainplatform_row row mainplatform-"+currentTheme}>
                 <div className="food_search col col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
