@@ -1,0 +1,293 @@
+@media only screen and (max-width: 991.5px ) and (min-width: 480px){
+    .mainbody .h1{
+        text-align: center;
+        font-size: 70px;
+    }
+    .mainbody .aye{
+        padding-top: 100px;
+        display: flex;
+        justify-content: center;
+    }
+    .the-form .BMICol{
+        display: flex;
+        justify-content: flex-end; 
+    }
+    .infoTab1{
+        margin-bottom: 50px;
+    }
+    .the-form .form-group{
+        display: flex !important;
+        justify-content: center;
+    }
+    .form-control{
+        margin-right: 0!important;
+    }
+    .BMICol{
+        display: flex;
+        flex-direction: column;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    .checkbox{
+        display: none !important;
+        width: 65%;
+    }
+    .BMI-class{
+        max-width: 59%;
+    }
+    #dropdownMenuButton{
+        font-size: 40px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .mainbody_clss{
+        display: block !important;
+        height: inherit !important;
+    }
+    .btn{
+        /* width: 19vw; */
+        font-size: 4vw;
+    }
+    .mainbody .h1{
+        text-align: center;
+        font-size: 15vw !important;
+    }
+    .mainbody .aye{
+        padding-top: 100px;
+        display: flex;
+        justify-content: center;
+    }
+    .signUpForm input,.signUpForm button,.signUpForm .alert{
+        width: 82.5vw !important;
+        padding: 4vw !important;
+    }
+    #visibility-icon{
+        display: none
+    }
+    #visibility-off-icon{
+        display: none
+    }
+    .the-form .submit-button{
+        margin-bottom: 50px;
+    }
+    #dropdownMenuButton{
+        font-size: 40px;
+    }
+    .the-form-dark .form-control{
+        /* margin-left: auto;;
+        margin-right: auto; */
+
+        width: 84% !important;
+    }
+    .the-form-light .form-control{
+        /* margin-left: auto;;
+        margin-right: auto; */
+        width: 84% !important;
+    }
+    .ftnIn-class{
+        width: 100%;
+        display: flex !important;
+        justify-content: space-evenly !important;
+    }
+    .ftnIn{
+        margin: 0 !important;
+    }
+    .the-form .row p{
+        display: none !important;
+    }
+    .the-form .row .BMI-class .form-control{
+        font-size: 15px !important;
+        padding: 5px 8px ;
+    }
+    .the-form input{
+        /* padding: 5px 8px !important;
+        width:70%!important; */
+        /* width: 70vw !important;
+        padding: 5px 8px !important; */
+        width: 82.5vw !important;
+        padding: 3.5vw !important;
+    }
+    .the-form{
+        font-size: 15px !important;
+    }
+    .the-form .btn{
+        font-size: 15px !important;
+        width: 100px !important;
+    }
+    .the-form .age{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end !important;
+        margin-top: 20px;
+    }
+    .sex{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #malebutton{
+        margin-left: 0 !important;
+    }
+    .units{
+        padding: 8px !important;
+        width: 40px !important;
+    }
+    .checkbox{
+        font-size: 12px !important;
+    }
+    #years{
+        visibility: hidden;
+        width: 0px;
+        /* display: none; */
+    }
+    .checkbox{
+        display: none !important;
+    }
+    .BMI-class select{
+        margin-left: 20px;
+        display: flex !important;
+        justify-content: flex-end !important;
+        font-size: 15px !important;
+    }
+    #ur-bmi-text{
+        width: 150px !important;
+        padding-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 15px !important;
+    }
+    #ideal-weight{
+        width: 150px !important;
+        padding-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 15px !important;
+    }
+    .weight-status-and-ideal-weight{
+        font-size: 18px !important;
+    }
+    #feet, #inches{
+        width: 67px !important;
+        padding: 5px 8px !important;
+        height: 30px;
+    }
+    .feetColon{
+        font-size: medium !important;
+    }
+    .next-skip-button{
+        margin-bottom: 1px;
+    }
+    .next-skip-button{
+        margin-left: 0;
+    }
+    .mainplatform .daily_cal h2{
+        font-size: 6vw !important;
+        font-weight: 600;
+    }
+    .mainplatform  .daily_events_col{
+        padding : 0px 10px;
+    }
+    
+    .mainplatform .dailyEventComponent h5{
+        font-size: 4.5vw;
+    }
+    .mainplatform .dailyEventComponent h6{
+        font-size: 3.9vw;
+    }
+    .mainplatform .daily_events .addIcon{
+        /* display: none !important;
+         */
+         font-size: 5.5vw !important;
+    }
+    .mainplatform .daily_events .removeIcon{
+        margin: 0 2px !important;
+    }
+    .daily-event-info p, span{
+        margin-right: 5px !important;
+    }
+    .daily-event-info-inner p{
+        max-width: 120px !important;
+    }
+    .daily-event-info-inner-warning p{
+        max-width: 180px !important;
+        font-size: 3.2vw!important;
+    }
+    .mainplatform .dailyEventComponent .cal-eaten{
+        width: fit-content;
+    }
+    .mainplatform .mainplatform_row{
+        padding: 20px 0;
+    }
+    .addIcon{
+        /* size: ; */
+        margin-left: 5px !important;
+        margin-right: 0px !important;
+    }
+    .input-div{
+        padding: 5px 5px 5px 8px !important;
+        /* display: none !important; */
+    }
+    .daily_events::-webkit-scrollbar {
+        display: none;
+    }
+    .big-food-search{
+        justify-content:flex-start !important;
+    }
+    .mainplatform  .food_search{
+        padding : 0px 10px;
+    }
+    .mainplatform  .food-search{
+        margin: 10px 5px 5px 5px !important; 
+    }
+    /* .mainplatform  .food-search .input-div{
+        padding: 5px 5px 5px 10px !important
+    } */
+    .mainplatform  .food-search .input-div input::placeholder{
+        font-size: 4vw;
+    }
+    .foodsearch_event{
+        font-size: 7vw !important;
+    }
+    .hone{
+        font-size: 8vw !important;
+    }
+    .food-search .food{
+        padding: 20px !important;
+    }
+    .food-search .food_cals h4{
+        font-size: 6vw !important;
+        font-weight: 600 !important;
+        text-align:right;        
+    }
+    .food-search .food_cals p{
+        font-size: 4.5vw !important;
+        font-weight: 600 !important;
+    }
+    .macros_inner_div p{
+        font-size: 4vw !important;
+        font-weight: 600 !important;
+    }
+    .macros_inner_div h1{
+        font-size: 6.5vw !important;
+    }
+    .info{
+        margin-top: 20px !important;
+        align-items: flex-start !important;
+    }
+    .info h2{
+        width: 30vw !important;
+    }
+    .macros_info{
+        font-size: 4vw !important;
+    }
+    .macros_name{
+ 
+        font-size: 6vw !important;
+    }
+    .data_div{
+        text-align: center;
+    }
+    .calorie_eaten_info{
+        justify-content: center !important;
+    }
+}

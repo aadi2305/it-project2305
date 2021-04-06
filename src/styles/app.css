@@ -1,0 +1,15 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+@font-face {
+    font-family: myFirstFont;
+    src: url(./Montserrat-Medium.ttf);
+}
+  
+*{
+    /* font-family: 'Arvo', serif; */
+    /* font-family: 'Dosis', sans-serif; */
+    font-family: "Montserrat", sans-serif !important;
+    /* font-family: 'Montserrat Subrayada', sans-serif; */
+}
