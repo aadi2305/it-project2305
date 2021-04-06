@@ -3,9 +3,6 @@ import Navbar from "./Navbar";
 import Mainbody from "./Mainbody"
 import "../styles/dashboard.css"
 import {useTheme} from "../contexts/ThemeContext";
-import axios from "../axios"
-import { Redirect } from 'react-router-dom';
-import LandingPageInfo from "./LandingPageInfo";
 import {useAuth} from "../contexts/AuthContext";
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@material-ui/icons/GitHub';

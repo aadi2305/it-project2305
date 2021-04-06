@@ -3,13 +3,13 @@ import "firebase/auth"
 
 
 var app = firebase.initializeApp({
-    apiKey: "AIzaSyA0Fuw3B4F72QAq0WcDPmNax_DWndxPkaU",
-    authDomain: "calorix-7e8e4.firebaseapp.com",
-    projectId: "calorix-7e8e4",
-    storageBucket: "calorix-7e8e4.appspot.com",
-    messagingSenderId: "1050684478277",
-    appId: "1:1050684478277:web:f1242aab99f6de3ffba42c",
-    measurementId: "G-MK1JB536CG"
+    apiKey: "AIzaSyAqv_w68XZ4U4ZxC1AMKvRQW63UKh_gXes",
+    authDomain: "it-project-8260b.firebaseapp.com",
+    projectId: "it-project-8260b",
+    storageBucket: "it-project-8260b.appspot.com",
+    messagingSenderId: "64943326677",
+    appId: "1:64943326677:web:16e41125c569545cef695c",
+    measurementId: "G-E3CHR51SMB"
   });
   
   

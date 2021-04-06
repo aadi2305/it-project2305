@@ -176,6 +176,10 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     justify-content: space-between;
 }
+.daily-event-info-inner-warning{
+    display: flex;
+    justify-content: space-between;
+}
 .daily-event-info-inner .removeIcon{
     cursor: pointer;
     font-size: 17px;
