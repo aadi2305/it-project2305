@@ -1,0 +1,31 @@
+.info{
+    /* padding-top: ; */
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    height: 350px;
+    /* width: 200px; */
+}
+.info h2{
+    text-align: center;
+    width: 200px;
+}
+.macros_info{
+    font-size: 20px;
+}
+.macros_name{
+    font-weight: 600;
+    font-size: 28px;
+}
+.info-light .protein{
+    border-right: 3px #05386b solid;
+}
+.info-light .carbs{
+    border-right: 3px #05386b solid;
+}
+.info-dark .protein{
+    border-right: 3px #5cdb95 solid;
+}
+.info-dark .carbs{
+    border-right: 3px #5cdb95 solid;
+}
