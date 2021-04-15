@@ -38,21 +38,22 @@ const Dashboard = () => {
     }
     //console.log(CurrentTheme);
     return ( 
-        <div className={"dashboard-"+currentTheme}>
-            <div className={"dashboard dashboard-"+currentTheme}>
-                <Navbar modeChange = {modeChange} mode = {othermode}/>
-                <div className="mainbody_clss"><Mainbody /></div>
-                
-            </div>
-            <div className="footar">
-                <p className = "footer_created_by" >Created By Vivekanand Mogali</p>
-                <div className="social_media_icons">
-                    <a href="https://www.linkedin.com/in/vivekanand-mogali-389226191/"><div className="social_media_icon"><LinkedInIcon style={{ fontSize: 40 }} /></div></a>
-                    <a href="https://github.com/aadi2305"><div className="social_media_icon"><GitHubIcon style={{ fontSize: 36, marginLeft : "20px" }} /></div></a>
-                    <a href="https://www.fiverr.com/share/2AD4jr" style = {{display : "flex", alignItems : "center", textDecoration : "none"}}><div className="fiverrr">fiverr</div></a>
-                
+        <div>
+            <Navbar modeChange = {modeChange} mode = {othermode}/>
+            <div className={"dashboard-light"}>
+                <div className={"dashboard dashboard-light"}>
+                    <div className="mainbody_clss"><Mainbody /></div>
                 </div>
+                <div className="footar">
+                    <p className = "footer_created_by" >Created By Mihir-Savani-Sharwari-Vivek</p>
+                    <div className="social_media_icons">
+                        <a href="https://www.linkedin.com/in/vivekanand-mogali-389226191/"><div className="social_media_icon"><LinkedInIcon style={{ fontSize: 40 }} /></div></a>
+                        <a href="https://github.com/aadi2305"><div className="social_media_icon"><GitHubIcon style={{ fontSize: 36, marginLeft : "20px" }} /></div></a>
+                        <a href="https://www.fiverr.com/share/2AD4jr" style = {{display : "flex", alignItems : "center", textDecoration : "none"}}><div className="fiverrr">fiverr</div></a>
+                    
+                    </div>
 
+                </div>
             </div>
         </div>
 

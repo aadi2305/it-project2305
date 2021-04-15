@@ -41,23 +41,9 @@ const Mainbody = () => {
         catch(err) {
           console.log(err);
         }
-        axios.post("/createUser", {
+        axios.post("/CreateUser", {
             email : email.current.value,
-            name : fullName.current.value,
-            age : 0,
-            weight : 0,
-            height : 0,
-            targetWeight: 0,
-            calReq : 0,
-            targetCal : 0,
-            dailyData : {
-                totalCal : 0,
-                breakfast : [],
-                morningSnack : [],
-                lunch : [],
-                eveningSnack : [],
-                dinner : []
-            }
+            name : fullName.current.value
         }).then(res=>{
             console.log(res);
         },err=>{
@@ -91,13 +77,13 @@ const Mainbody = () => {
     // }, [currentUser]);
     return ( 
         <div className="mainbody container-fluid">
-            {currentUser ? <Redirect to = "/dashboard" />:null}
-            {currentUser && signedUp ? <Redirect to = "/form" />:null}
-            {currentUser && loggedIn ? <Redirect to = "/dashboard" />:null}
-            {/* {currentUser ? <Redirect to = "/form" />:null} */}
+            {currentUser ? <Redirect to = "/frontPage" />:null}
+            {currentUser && signedUp ? <Redirect to = "/frontPage" />:null}
+            {currentUser && loggedIn ? <Redirect to = "/frontPage" />:null}
+            {currentUser ? <Redirect to = "/frontPage   " />:null}
             <div className="row">
                 <div className="col">
-                    <h1 className = "h1">Count Those Calories</h1>
+                    <h1 className = "h1">Feed The Book Worm In You</h1>
                 </div>
                 <div className="col aye">
                     {!loginStatus?

@@ -1,0 +1,39 @@
+.navbar{
+    color: #49274a !important;
+    background-color:  #f4decb !important;
+    padding: 8px 6%;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+}
+
+.navbar img{
+    width: 50px ;
+}
+.name-and-logo{
+    display: flex;
+    align-items: center;
+}
+.titleName{
+    font-weight: 1000;
+    margin-bottom: 0;
+}
+.navbar p , button{
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 101%;
+}
+.navbar .btn{
+    background-color: #49274a;
+    color: #f4decb;
+}
+.navbar .btn:hover{
+    background-color: #f4decb;
+    color: #49274a;
+}
+.navbar-list{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    width: 50%;
+}

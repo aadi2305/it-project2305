@@ -6,7 +6,11 @@ export const ThemeProvider = ({children})=>{
     
     const [currentTheme, setCurrentTheme] = useState("light");
     const [loginStatus, setloginStatus] = useState(false);
+    const [book, setBook] = useState()
 
+    const changeBook = (book)=>{
+        setBook(book);
+    }
 
     const updateTheme = (newTheme)=>{
         setCurrentTheme(newTheme)
@@ -20,7 +24,9 @@ export const ThemeProvider = ({children})=>{
         currentTheme,
         updateTheme,
         loginStatus,
-        changeLoginStatus
+        changeLoginStatus,
+        changeBook,
+        book
     }
 
     return (

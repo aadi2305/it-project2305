@@ -1,0 +1,52 @@
+[
+  {
+    "Title": "The Alchemist",
+    "Author": "Paulo Coelho",
+    "Price": 175,
+    "Genre": "Fantasy",
+    "Pages": 154,
+    "Type": "Paperback",
+    "GoodReads rating": 3.9,
+    "URL": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1466865542l/18144590._SY475_.jpg"
+  },
+  {
+    "Title": "The Book Theif",
+    "Author": "Markus Zusak",
+    "Price": 248,
+    "Genre": "Fiction",
+    "Pages": 584,
+    "Type": "Paperback",
+    "GoodReads rating": 4.4,
+    "URL": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1522157426l/19063._SY475_.jpg"
+  },
+  {
+    "Title": "Ikigai",
+    "Author": "Hector Garcia & Francsec Miralles",
+    "Price": 499,
+    "Genre": "Self help",
+    "Pages": 192,
+    "Type": "Hardcover",
+    "GoodReads rating": 4.6,
+    "URL": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1456092979l/28787203.jpg"
+  },
+  {
+    "Title": "A New Idea of India",
+    "Author": "Harsh Madhusudhan & Rajeev Mantri",
+    "Price": 500,
+    "Genre": "Non Fiction",
+    "Pages": 384,
+    "Type": "Hardcover",
+    "GoodReads rating": 4.4,
+    "URL": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1598332910l/55113347._SY475_.jpg"
+  },
+  {
+    "Title": "The 5 am club",
+    "Author": "Robin Sharma",
+    "Price": 204,
+    "Genre": "Self help",
+    "Pages": 299,
+    "Type": "Paperback",
+    "GoodReads rating": 3.8,
+    "URL": "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1545910967l/37502596._SY475_.jpg"
+  }
+]

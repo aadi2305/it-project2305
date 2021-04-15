@@ -1,0 +1,56 @@
+.wishlist{
+    background-color: #f4decb;
+    color: #49274a;
+    padding: 80px 6%;
+}
+.individual-book{
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 2px;
+    padding: 20px;
+    background-color: #49274a;
+    color: #f4decb;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+/* .individual-book:hover{
+    background-color: #f4decb;
+    color: #49274a;
+} */
+.individual-book img{
+    max-width: 100px;
+}
+.individual-book h3{
+    font-size: 17px;
+}
+.individual-book #author{
+    font-size: 15px;
+    max-width: 200px;
+}
+.individual-book #title{
+    max-width: 200px;
+}
+.wishlist .btn{
+    background-color: #f4decb;
+    color: #49274a;
+}
+.wishlist .btn:hover{
+    background-color: #49274a;
+    color: #f4decb;
+}
+.reciept{
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 2px;
+    padding: 20px;
+    background-color: #49274a;
+    color: #f4decb;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+.reciept h1{
+    font-size: 20px;
+}

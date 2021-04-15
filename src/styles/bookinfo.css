@@ -1,0 +1,69 @@
+.book-info{
+    background-color:  #f4decb;
+    color: #49274a;
+}
+.book-info h1,h2,h3,h4,p{
+    margin: 0;
+}
+.book-info p{
+    display: inline;
+}
+.book-img{
+    display: flex;
+    justify-content: center;
+}
+.book-img img{
+    width: 300px;
+}
+.book-info .row{
+    padding: 80px 6%;
+}
+.book-information{
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+    padding-left: 50px;
+}
+#book-name{
+    font-weight: 600;
+}
+#book-ratings{
+    display: flex;
+    margin-top: 10px !important;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 5px;
+    align-items: center;
+    width: fit-content;
+    background-color: #49274a;
+    color: #f4decb;
+}
+#star-icon{
+    margin-left: 3px;
+    font-size: 5px;
+}
+#book-author{
+    display: inline-block;
+    margin-top: 20px;
+}
+#paperback-fantasy p{
+    font-size: 13px;
+}
+#book-price{
+    margin-top: 20px;
+}
+#stock-staus{
+    margin-top: 10px;
+}
+.book-info .buttons{
+    margin-top: 30px;
+}
+.book-info .buttons button{
+    margin-right: 20px;
+    background-color: #49274a;
+    color: #f4decb;
+}
+.book-info .buttons button:hover{
+    background-color: #f4decb;
+    color: #49274a;
+}
