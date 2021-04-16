@@ -35,7 +35,32 @@ const WishList = () => {
         
     }, []);
     const removeEvent = (title) =>{
-        setBooksInCart()
+        axios.post('/RemoveFromCart', {
+            title : title,
+            email: currentUser.email, 
+            })
+            .then((response) => {
+                console.log(response);
+            }, (error) => {
+            console.log(error);
+            });
+    }
+    const orderNowHandler = ()=>{
+        if(booksInCart){
+            for(var i = 0; i <booksInCart.length ; i++ ){
+                axios.post('/AddToOrderedList', {
+                    title : booksInCart[i].title,
+                    email: currentUser.email, 
+                    })
+                    .then((response) => {
+                        console.log(response);
+                    }, (error) => {
+                    console.log(error);
+                    });
+            }
+        }
+        
+        
     }
     return ( 
         <div className="wish-list">
@@ -53,7 +78,7 @@ const WishList = () => {
                             <h3 className = "other-book-info-in-wish">{book.type}</h3>
                             <h3 className = "other-book-info-in-wish">Rs. {book.price}</h3>
                             <button onClick = {()=>{
-                                removeEvent(book.Title)
+                                removeEvent(book.title)
                             }} className = "btn">Remove</button>
                         </div>
                     )
@@ -62,7 +87,7 @@ const WishList = () => {
                     <h1>Total :  Rs. {Total}</h1>
                     <h1>Delivery Fee :  Rs. 100</h1>
                     <h1>Total Payable Amout:  Rs. {Total + 100}</h1>
-                    <button className = "btn">Order Now</button>
+                    <button onClick = {orderNowHandler} className = "btn">Order Now</button>
                 </div>
             </div>
             

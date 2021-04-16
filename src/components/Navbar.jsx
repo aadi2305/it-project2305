@@ -13,6 +13,7 @@ const Navbar = (props) => {
     const{ logout} = useAuth();
     const [dashboardClick, setDashboardClick] = useState(false);
     const [profileClick, setprofileClick] = useState(false);
+    const [orederedClick, setorederedClick] = useState(false);
     const yooo = window.location.href.split("/")[window.location.href.split("/").length-1];
     if(yooo === "")console.log("hurray");
     const [backArrowClicked, setBackArrowClicked] = useState(false);
@@ -35,13 +36,15 @@ const Navbar = (props) => {
             <nav className="navbar">
                 {dashboardClick && <Redirect to = "/wishList" />}
                 {profileClick && <Redirect to = "/cart" />}
+                {orederedClick && <Redirect to = "/ordered" />}
                 {/* {backArrowClicked? <div>{setEvent("")}<Redirect to = "/dashboard"/></div>: null} */}
                 <h1 onClick ={()=>window.location.href ="/"} style = {{cursor : "pointer"}} class="titleName" href="#">Kitabi Keeda</h1>
                 {showToggleBtn ? null:
                 <div className = "navbar-list">
                     <p style = {{cursor : "pointer"}} onClick ={()=>window.location.href ="/frontPage"} >Home</p>
-                    {yooo !== ""?<p style = {{cursor : "pointer"}} onClick = {()=>setDashboardClick(true)}>Wishlist</p>:<p style = {{cursor : "pointer"}}onClick = {()=>alert("Please Login First")}>Dashboard</p>}
-                    {yooo !== ""?<p style = {{cursor : "pointer"}} onClick = {()=>setprofileClick(true)}>Cart</p>:<p style = {{cursor : "pointer"}} onClick = {()=>alert("Please Login First")}>Profile</p>}
+                    {yooo !== ""?<p style = {{cursor : "pointer"}} onClick = {()=>setDashboardClick(true)}>Wishlist</p>:<p style = {{cursor : "pointer"}}onClick = {()=>alert("Please Login First")}>Wishlist</p>}
+                    {yooo !== ""?<p style = {{cursor : "pointer"}} onClick = {()=>setprofileClick(true)}>Cart</p>:<p style = {{cursor : "pointer"}} onClick = {()=>alert("Please Login First")}>Cart</p>}
+                    {yooo !== ""?<p style = {{cursor : "pointer"}} onClick = {()=>setorederedClick(true)}>Ordered Books</p>:<p style = {{cursor : "pointer"}} onClick = {()=>alert("Please Login First")}>Ordered Books</p>}
                    {/* <button onClick = {()=>{
                         props.modeChange();
                     }} className = "btn">{props.mode} Mode

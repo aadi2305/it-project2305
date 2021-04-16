@@ -10,8 +10,7 @@ const WishList = () => {
     const [booksInWishList, setBooksInWishList] = useState()
     useEffect(() => {
         console.log(currentUser.email);
-        axios.post('/SendWishlistInfo', {
-            name : "asd",
+        axios.post('/SendToOrderedList', {
             email: currentUser.email, 
             })
             .then((response) => {

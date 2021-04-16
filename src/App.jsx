@@ -10,6 +10,7 @@ import FrontPage from "./components/FrontPage"
 import BookInfo from "./components/BookInfo"
 import Cart from "./components/Cart"
 import WishList from "./components/WishList"
+import Ordered from "./components/Ordered"
 function App() {
   return (
     <div className="App">
@@ -22,6 +23,7 @@ function App() {
               <Route exact path="/bookInfo" component={BookInfo} />
               <Route exact path="/wishList" component={WishList} />
               <Route exact path="/cart" component={Cart} />
+              <Route exact path="/ordered" component={Ordered} />
               <Route exact path="/bookInfo" component={BookInfo} />
             </Switch>
           </Router>
